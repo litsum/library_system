@@ -1,0 +1,6 @@
+RegularMember 赖斯琦 1 123456 55 0
+RegularMember 高筠清 2 123456 25 0
+RegularMember 王进宝 3 123456 15 0
+RegularMember 罗文辉 4 123456 10 0
+RegularMember 王长建 5 123456 10 0
+RegularMember С�� 6 123456 10 0

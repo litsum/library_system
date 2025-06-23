@@ -1,5 +1,5 @@
 import requests
-def your_function(input_str):
+def llm_progress(input_str):
     url = "https://api.siliconflow.cn/v1/chat/completions"
 
     payload = {
@@ -39,5 +39,5 @@ def your_function(input_str):
     return generated_text
 
 #region 调试
-#input_str = input("请输入：")
-#print(your_function(input_str))
+input_str = input("请输入：")
+print(llm_progress(input_str))

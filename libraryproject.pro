@@ -34,6 +34,7 @@ HEADERS += \
     datastorage.h \
     librarydatabase.h \
     librarysystem.h \
+    llm_progress.h \
     readercol.h \
     registration.h \
     search.h
@@ -62,4 +63,5 @@ RESOURCES +=
 DISTFILES += \
     book1.txt \
     book2.txt \
+    llm_function.py \
     readers.txt

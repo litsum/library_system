@@ -37,6 +37,8 @@ void registration::on_pushButton_clicked()
         }
     }
     if(!exist){
+        ui->accout->clear();
+        ui->password->clear();
         QMessageBox::warning(this,"失败！","账号不存在！");
     }
     for(auto it=db.readers.begin();it<db.readers.end();++it){
@@ -45,13 +47,13 @@ void registration::on_pushButton_clicked()
             it->setLocked();
             readercol rec;
             rec.exec();
-            ui->accout->clear();
-            ui->password->clear();
             close();}
             else QMessageBox::warning(this,"警告！","账号已被封禁！");
     }
         else if(acc==it->getName()&&pas!=it->getPassword()){
             QMessageBox::warning(this,"失败！","密码错误！");
+            ui->accout->clear();
+            ui->password->clear();
         }
     }
 

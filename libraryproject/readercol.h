@@ -28,6 +28,8 @@ private slots:
     void on_borrowbook_clicked();
     void on_pay_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::readercol *ui;
     QStringListModel *model;

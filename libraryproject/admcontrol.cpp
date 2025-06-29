@@ -4,19 +4,21 @@
 #include "database.h"
 #include <QDialog>
 #include <QMessageBox>
+#include <QMenu>
+#include <QComboBox>
 
 admcontrol::admcontrol(QWidget *parent)
     : QDialog(parent), ui(new Ui::admcontrol)
 {
     ui->setupUi(this);
-    for(auto is=db.books.begin();is<db.books.end();++is){
+    /*for(auto is=db.books.begin();is<db.books.end();++is){
         QString bo=QString::fromStdString(is->getName());
         booklist.append(bo);
     }
     model= new QStringListModel(this); //创建数据模型
     model->setStringList(booklist); //初始化数据
     ui->listView->setModel(model); //设置数据模型
-    ui->listView->setEditTriggers(QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked);
+    ui->listView->setEditTriggers(QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked);*/
 
     _model->setHorizontalHeaderLabels({"ISBN", "书名", "作者","出版社","状态"});
     int row=0;
@@ -47,15 +49,33 @@ admcontrol::admcontrol(QWidget *parent)
         statusItem->setCheckState(row % 2 ? Qt::Checked : Qt::Unchecked);
         // 添加到行
         rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
-
         // 添加行到模型
         _model->appendRow(rowItems);
     }
+        //右键点击功能
+        tableView_2->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(tableView, &QTableView::customContextMenuRequested, [&](const QPoint &pos){
+            QMenu menu;
+            QAction *deleteAction = menu.addAction("删除图书");
+            if (deleteAction == menu.exec(tableView->viewport()->mapToGlobal(pos))) {
+                QModelIndex index = tableView->indexAt(pos);
+                if (index.isValid()) {
+                    QString name = _model->index(index.row(), 1).data().toString();
+                    db.deletebook(name);
+                    _model->removeRow(index.row());
+                }
+            }
+        });
+
+        //下拉选择
+        ui->comboBox->addItem("苹果", "fruit");
+        ui->comboBox->addItem("香蕉", "fruit");
+        ui->comboBox->addItem("汽车", "vehicle");
 
     // 关联到视图
     ui->tableView->setModel(_model);
+    ui->tableView_2->setModel(_model);
 }
-
 admcontrol::~admcontrol()
 {
     delete ui;  // 释放内存
@@ -68,7 +88,7 @@ void admcontrol::on_pushButton_clicked()
     QString name = ui->name_1->text().toUtf8();
     QString author = ui->author->text();
     QString publisher = ui->publisher->text();
-    QString isbn = ui->ISBN->text();
+    QString isbn = ui->resultLabel->text();
 
     if (name.isEmpty() || author.isEmpty() || publisher.isEmpty() || isbn.isEmpty()) {
         QMessageBox::warning(this, "错误", "请填写所有字段！");
@@ -80,7 +100,6 @@ void admcontrol::on_pushButton_clicked()
     ui->name_1->clear();
     ui->author->clear();
     ui->publisher->clear();
-    ui->ISBN->clear();
 }
 
 
@@ -132,4 +151,17 @@ void admcontrol::on_pushButton_11_clicked()
 }
 
 
+
+
+void admcontrol::on_comboBox_activated(int index)
+{
+    QString text = ui->comboBox->itemText(index);
+    QString type = ui->comboBox->itemData(index).toString();
+
+    QString result = QString("您选择了: %1 (类型: %2)")
+                         .arg(text).arg(type);
+    ui->resultLabel->setText(result);
+
+    qDebug() << "选择结果:" << result;
+}
 

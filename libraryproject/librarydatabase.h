@@ -3,6 +3,7 @@
 #define LIBRARYDATABASE_H
 
 #include "datastorage.h"
+#include <QString>
 
 class LibraryDatabase {
 public:
@@ -28,6 +29,14 @@ public:
     std::vector<reader> readers;
     std::vector<Book> books;
     int total=books.size();
+    void deletebook(QString name){
+        for(auto is=books.begin();is<books.end();++is){
+            std::string Name = name.toUtf8().toStdString();
+            if(Name==is->getName()){
+                books.erase(is);
+            }
+        }
+    }
 private:
     // 私有构造函数
     LibraryDatabase() = default;

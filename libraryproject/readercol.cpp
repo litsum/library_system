@@ -3,9 +3,8 @@
 #include "book.h"
 #include "database.h"
 #include "search.h"
-#include "delete_.h"
 #include <QMessageBox>
-
+#include <QMenu>
 
 
 readercol::readercol(QWidget *parent)
@@ -52,6 +51,7 @@ readercol::readercol(QWidget *parent)
 
             // 添加行到模型
             _model->appendRow(rowItems);
+
         }
 
         // 关联到视图
@@ -94,4 +94,11 @@ void readercol::on_pay_clicked()
 }
 
 
+
+
+void readercol::on_pushButton_2_clicked()
+{
+    QString content = ui->lineEdit_2->text();
+    std::string user_input = content.toUtf8().toStdString();
+}
 

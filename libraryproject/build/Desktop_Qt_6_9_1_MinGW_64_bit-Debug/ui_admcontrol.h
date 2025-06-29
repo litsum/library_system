@@ -11,10 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
@@ -29,20 +30,20 @@ public:
     QTabWidget *addbook;
     QWidget *tab;
     QPushButton *pushButton_3;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_4;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QLineEdit *name_1;
     QLineEdit *author;
     QLineEdit *publisher;
-    QLineEdit *ISBN;
-    QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton;
+    QComboBox *comboBox;
+    QLabel *resultLabel;
     QWidget *tab_3;
     QLineEdit *name_2;
     QPushButton *pushButton_6;
-    QListView *listView;
+    QTableView *tableView_2;
     QWidget *tab_4;
     QLineEdit *name_3;
     QPushButton *pushButton_8;
@@ -61,7 +62,7 @@ public:
         if (admcontrol->objectName().isEmpty())
             admcontrol->setObjectName("admcontrol");
         admcontrol->resize(625, 400);
-        admcontrol->setMinimumSize(QSize(625, 300));
+        admcontrol->setMinimumSize(QSize(200, 300));
         admcontrol->setMaximumSize(QSize(625, 400));
         addbook = new QTabWidget(admcontrol);
         addbook->setObjectName("addbook");
@@ -70,16 +71,10 @@ public:
         tab->setObjectName("tab");
         pushButton_3 = new QPushButton(tab);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(430, 100, 56, 18));
-        pushButton_5 = new QPushButton(tab);
-        pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(430, 220, 56, 18));
-        pushButton_4 = new QPushButton(tab);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(430, 160, 56, 18));
+        pushButton_3->setGeometry(QRect(430, 120, 56, 18));
         verticalLayoutWidget = new QWidget(tab);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(29, 9, 371, 321));
+        verticalLayoutWidget->setGeometry(QRect(30, 20, 391, 211));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -113,25 +108,24 @@ public:
 
         verticalLayout->addWidget(publisher, 0, Qt::AlignmentFlag::AlignHCenter);
 
-        ISBN = new QLineEdit(verticalLayoutWidget);
-        ISBN->setObjectName("ISBN");
-        ISBN->setMinimumSize(QSize(250, 30));
-        ISBN->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-
-        verticalLayout->addWidget(ISBN, 0, Qt::AlignmentFlag::AlignHCenter);
-
-        pushButton = new QPushButton(verticalLayoutWidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setMinimumSize(QSize(80, 30));
-
-        verticalLayout->addWidget(pushButton, 0, Qt::AlignmentFlag::AlignHCenter);
-
         pushButton_2 = new QPushButton(tab);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(430, 50, 56, 18));
+        pushButton_2->setGeometry(QRect(430, 60, 56, 18));
+        pushButton_4 = new QPushButton(tab);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(430, 180, 56, 18));
+        pushButton_4->setMinimumSize(QSize(56, 18));
+        pushButton_4->setMaximumSize(QSize(56, 18));
+        pushButton = new QPushButton(tab);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(200, 300, 80, 30));
+        pushButton->setMinimumSize(QSize(80, 30));
+        comboBox = new QComboBox(tab);
+        comboBox->setObjectName("comboBox");
+        comboBox->setGeometry(QRect(330, 250, 60, 22));
+        resultLabel = new QLabel(tab);
+        resultLabel->setObjectName("resultLabel");
+        resultLabel->setGeometry(QRect(100, 250, 201, 16));
         addbook->addTab(tab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
@@ -146,9 +140,9 @@ public:
         pushButton_6 = new QPushButton(tab_3);
         pushButton_6->setObjectName("pushButton_6");
         pushButton_6->setGeometry(QRect(270, 20, 56, 18));
-        listView = new QListView(tab_3);
-        listView->setObjectName("listView");
-        listView->setGeometry(QRect(0, 40, 611, 331));
+        tableView_2 = new QTableView(tab_3);
+        tableView_2->setObjectName("tableView_2");
+        tableView_2->setGeometry(QRect(0, 40, 621, 341));
         addbook->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName("tab_4");
@@ -207,9 +201,8 @@ public:
         QObject::connect(pushButton_2, &QPushButton::clicked, name_1, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_3, &QPushButton::clicked, author, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_4, &QPushButton::clicked, publisher, qOverload<>(&QLineEdit::clear));
-        QObject::connect(pushButton_5, &QPushButton::clicked, ISBN, qOverload<>(&QLineEdit::clear));
 
-        addbook->setCurrentIndex(4);
+        addbook->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(admcontrol);
@@ -219,14 +212,13 @@ public:
     {
         admcontrol->setWindowTitle(QCoreApplication::translate("admcontrol", "admcontrol", nullptr));
         pushButton_3->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         name_1->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
         author->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\275\234\350\200\205\357\274\232", nullptr));
         publisher->setPlaceholderText(QCoreApplication::translate("admcontrol", "\345\207\272\347\211\210\347\244\276\357\274\232", nullptr));
-        ISBN->setPlaceholderText(QCoreApplication::translate("admcontrol", "ISBN\357\274\232", nullptr));
-        pushButton->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
         pushButton_2->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
+        pushButton->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
+        resultLabel->setText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\347\261\273\345\210\253\357\274\232", nullptr));
         addbook->setTabText(addbook->indexOf(tab), QCoreApplication::translate("admcontrol", "\346\267\273\345\212\240\344\271\246\347\261\215", nullptr));
         name_2->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
         pushButton_6->setText(QCoreApplication::translate("admcontrol", "\346\220\234\347\264\242", nullptr));

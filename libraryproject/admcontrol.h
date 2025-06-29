@@ -10,6 +10,8 @@
 #include <QTableView>
 #include <QStandardItemModel>
 #include <QHeaderView>
+#include <QComboBox>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -30,12 +32,15 @@ private slots:
     void on_pushButton_11_clicked();
 
 
+    void on_comboBox_activated(int index);
+
 private:
     Ui::admcontrol *ui;
     QStringList booklist;
     QStringListModel *model;
     QStandardItemModel *_model = new QStandardItemModel(0, 5);
     QTableView *tableView = new QTableView;
+    QTableView *tableView_2 = new QTableView;
 };
 
 #endif

@@ -33,6 +33,9 @@ public:
     QLineEdit *lineEdit;
     QPushButton *pushButton;
     QWidget *tab_3;
+    QWidget *tab_4;
+    QLineEdit *lineEdit_2;
+    QPushButton *pushButton_2;
 
     void setupUi(QDialog *readercol)
     {
@@ -63,10 +66,19 @@ public:
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
         tabWidget->addTab(tab_3, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName("tab_4");
+        lineEdit_2 = new QLineEdit(tab_4);
+        lineEdit_2->setObjectName("lineEdit_2");
+        lineEdit_2->setGeometry(QRect(50, 50, 221, 21));
+        pushButton_2 = new QPushButton(tab_4);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(310, 50, 56, 18));
+        tabWidget->addTab(tab_4, QString());
 
         retranslateUi(readercol);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(readercol);
@@ -80,6 +92,9 @@ public:
         pushButton->setText(QCoreApplication::translate("readercol", "\346\220\234\347\264\242", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("readercol", "\344\271\246\345\237\216", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("readercol", "\350\264\246\346\210\267\347\212\266\346\200\201", nullptr));
+        lineEdit_2->setPlaceholderText(QCoreApplication::translate("readercol", "\350\257\267\350\276\223\345\205\245\345\206\205\345\256\271\357\274\232", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("readercol", "\347\241\256\345\256\232", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("readercol", "AI", nullptr));
     } // retranslateUi
 
 };

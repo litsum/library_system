@@ -210,7 +210,7 @@ public:
 
     void retranslateUi(QDialog *admcontrol)
     {
-        admcontrol->setWindowTitle(QCoreApplication::translate("admcontrol", "admcontrol", nullptr));
+        admcontrol->setWindowTitle(QCoreApplication::translate("admcontrol", "\347\256\241\347\220\206\345\221\230", nullptr));
         pushButton_3->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         name_1->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
         author->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\275\234\350\200\205\357\274\232", nullptr));

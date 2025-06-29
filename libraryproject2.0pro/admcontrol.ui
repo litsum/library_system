@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>admcontrol</string>
+   <string>管理员</string>
   </property>
   <widget class="QTabWidget" name="addbook">
    <property name="geometry">

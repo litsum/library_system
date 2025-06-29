@@ -71,7 +71,7 @@ public:
 
     void retranslateUi(QDialog *registration)
     {
-        registration->setWindowTitle(QCoreApplication::translate("registration", "Dialog", nullptr));
+        registration->setWindowTitle(QCoreApplication::translate("registration", "\350\257\273\350\200\205\347\224\250\346\210\267\347\231\273\345\275\225", nullptr));
         accout->setPlaceholderText(QCoreApplication::translate("registration", "\346\230\265\347\247\260\357\274\232", nullptr));
         password->setPlaceholderText(QCoreApplication::translate("registration", "\345\257\206\347\240\201\357\274\232", nullptr));
         pushButton->setText(QCoreApplication::translate("registration", "\347\231\273\345\275\225", nullptr));

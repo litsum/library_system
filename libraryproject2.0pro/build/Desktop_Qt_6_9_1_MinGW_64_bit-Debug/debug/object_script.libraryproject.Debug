@@ -10,6 +10,7 @@ debug/main.o
 debug/readercol.o
 debug/registration.o
 debug/search.o
+debug/qrc_picture.o
 debug/qrc_qmake_qmake_qm_files.o
 debug/moc_Administrator.o
 debug/moc_Newreader.o

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>读者用户登录</string>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">

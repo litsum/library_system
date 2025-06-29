@@ -57,7 +57,7 @@ public:
 
     void retranslateUi(QDialog *Newreader)
     {
-        Newreader->setWindowTitle(QCoreApplication::translate("Newreader", "Dialog", nullptr));
+        Newreader->setWindowTitle(QCoreApplication::translate("Newreader", "\346\226\260\347\224\250\346\210\267\346\263\250\345\206\214", nullptr));
         pushButton_2->setText(QCoreApplication::translate("Newreader", "\345\256\214\346\210\220", nullptr));
         lineEdit->setPlaceholderText(QCoreApplication::translate("Newreader", "\345\257\206\347\240\201\357\274\232", nullptr));
         lineEdit_2->setPlaceholderText(QCoreApplication::translate("Newreader", "\346\230\265\347\247\260\357\274\232", nullptr));

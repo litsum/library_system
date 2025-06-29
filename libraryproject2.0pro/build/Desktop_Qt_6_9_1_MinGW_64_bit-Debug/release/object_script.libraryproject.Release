@@ -10,6 +10,7 @@ release/main.o
 release/readercol.o
 release/registration.o
 release/search.o
+release/qrc_picture.o
 release/qrc_qmake_qmake_qm_files.o
 release/moc_Administrator.o
 release/moc_Newreader.o

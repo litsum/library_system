@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>50</y>
+     <y>60</y>
      <width>281</width>
      <height>61</height>
     </rect>
@@ -58,7 +58,7 @@ border-radius:30px ;</string>
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>150</y>
+     <y>160</y>
      <width>250</width>
      <height>51</height>
     </rect>
@@ -93,7 +93,7 @@ border-radius:10px ;</string>
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>230</y>
+     <y>240</y>
      <width>250</width>
      <height>51</height>
     </rect>
@@ -121,15 +121,15 @@ border-radius:10px ;</string>
   <widget class="QLabel" name="backgroud_1">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>26</x>
      <y>20</y>
-     <width>531</width>
+     <width>548</width>
      <height>361</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(26, 188, 156);
-border-radius:20px ;</string>
+border-radius:5px ;</string>
    </property>
    <property name="text">
     <string/>

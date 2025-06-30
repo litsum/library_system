@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>zhanghu.png</file>
         <file>mima.png</file>
+        <file>reg.png</file>
+        <file>reg_1.png</file>
     </qresource>
 </RCC>

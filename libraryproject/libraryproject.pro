@@ -12,40 +12,40 @@ QMAKE_CXXFLAGS += -fexec-charset=UTF-8
 SOURCES += \
     Administrator.cpp \
     Newreader.cpp \
-    add.cpp \
     admcontrol.cpp \
     database.cpp \
     datastorage.cpp \
+    find.cpp \
     librarydatabase.cpp \
     librarysystem.cpp \
     main.cpp \
     readercol.cpp \
     registration.cpp \
-    search.cpp
+    warning.cpp
 
 HEADERS += \
     Administrator.h \
     Newreader.h \
     Reader.h \
-    add.h \
     admcontrol.h \
     book.h \
     database.h \
     datastorage.h \
+    find.h \
     librarydatabase.h \
     librarysystem.h \
     readercol.h \
     registration.h \
-    search.h
+    warning.h
 
 FORMS += \
     Administrator.ui \
     Newreader.ui \
-    add.ui \
     admcontrol.ui \
     librarysystem.ui \
     readercol.ui \
-    registration.ui
+    registration.ui \
+    warning.ui
 
 TRANSLATIONS += \
     libraryproject_zh_CN.ts
@@ -57,7 +57,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES +=
+RESOURCES += \
+    picture.qrc
 
 DISTFILES += \
     book1.txt \

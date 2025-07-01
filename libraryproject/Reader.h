@@ -6,6 +6,7 @@
 #include <iostream>
 #include <qstring>
 #include <QStringListModel>
+#include "book.h"
 
 class reader { // 类名改为驼峰命名
 public:
@@ -55,12 +56,24 @@ public:
     void setLocked() { stat_ = 1; }
     void setUnlocked() { stat_ = 0; }
 
-    // 书籍借阅管理
+    //书架
+    QStringList borrowbooklist(){
+        for(auto it=borrowedBooks_.begin();it!=borrowedBooks_.end();++it){
+            QString bo=QString::fromStdString(*it);
+            booklist.append(bo);
+        }
+        return booklist;
+    }
+    const std::vector<std::string>& getBorrowedBooks() const {
+        return borrowedBooks_;
+    }
+    void addlist(std::string BO){
+        QString bo=QString::fromStdString(BO);
+        booklist.append(bo);
+    }
     void borrowBook(const std::string& bookId) {
         borrowedBooks_.push_back(bookId);
     }
-
-    //书架删除书籍
     bool returnBook(const std::string& bookId) {
         for (auto it = borrowedBooks_.begin(); it != borrowedBooks_.end(); ++it) {
             if (*it == bookId) {
@@ -70,26 +83,18 @@ public:
         }
         return false; // 未找到该书
     }
-
-    //保存用
-    const std::vector<std::string>& getBorrowedBooks() const {
-        return borrowedBooks_;
-    }
-
-    //书架
-    QStringList borrowbooklist(){
-        for(auto it=borrowedBooks_.begin();it<borrowedBooks_.end();++it){
-            QString bo=QString::fromStdString(*it);
-            booklist.append(bo);
+    void deletelist(QString tar){
+        for(auto it=booklist.begin();it!=booklist.end();){
+            if(*it==tar){it=booklist.erase(it);}
+            else ++it;
         }
-        return booklist;
     }
-
     void ban(){valid = 0;}//封禁读者
 
     void recover(){valid=1;}//解禁读者
 
     int getvalid() const{return valid;}
+
 private:
     std::string name_;
     std::string password_;

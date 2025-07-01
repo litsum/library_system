@@ -4,7 +4,8 @@
 #include "Newreader.h"
 #include "registration.h"
 #include "ui_librarysystem.h"
-#include "database.h" // 假设使用单例数据库
+#include "database.h"
+#include "warning.h"// 假设使用单例数据库
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -22,6 +23,8 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
+    warning w;
+    w.exec();
 }
 
 void Widget::on_ad_clicked()
@@ -47,5 +50,4 @@ void Widget::on_re_clicked()
     registration re(this);
     re.exec();
 }
-
 

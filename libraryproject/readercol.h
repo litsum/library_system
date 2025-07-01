@@ -3,11 +3,11 @@
 #include <QDialog>
 #include <string>
 #include <iostream>
-#include "database.h"
 #include <QStringListModel>
 #include <QTableView>
 #include <QStandardItemModel>
 #include <QHeaderView>
+#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,18 +23,20 @@ public:
     ~readercol();
 
 private slots:
-
-    void handleBookdelete1(const std::vector<Book>::iterator it);
-    void on_borrowbook_clicked();
-    void on_pay_clicked();
-
+    void refreshBookList();
     void on_pushButton_2_clicked();
-
+    void textchange(int index);
 private:
     Ui::readercol *ui;
     QStringListModel *model;
     QStandardItemModel *_model = new QStandardItemModel(0, 5);
     QTableView *tableView = new QTableView;
+    reader *currentReader = nullptr;  // 当前登录的读者指针
+
+    // 辅助方法
+    void loadAllBooks();
+    void showContextMenu(const QPoint &pos);
+    void showReturnMenu(const QPoint &pos);
 };
 
 

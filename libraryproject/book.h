@@ -18,11 +18,14 @@ public:
     // 获取isbn
     std::string getisbn() const { return ISBN;}
     std::string getISBN() const { return ISBN;}
+    bool isAvailable() const { return available; }
+    void setAvailable(bool avail) { available = avail; }
 private:
     std::string name;      // 书名
     std::string author;    // 作者
     std::string publisher; // 出版社
-    std::string ISBN; // ISBN号
+    std::string ISBN;
+    bool available = true;    // ISBN号
 };
 
 #endif // BOOK_H

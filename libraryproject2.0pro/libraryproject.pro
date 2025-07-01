@@ -12,10 +12,10 @@ QMAKE_CXXFLAGS += -fexec-charset=UTF-8
 SOURCES += \
     Administrator.cpp \
     Newreader.cpp \
-    add.cpp \
     admcontrol.cpp \
     database.cpp \
     datastorage.cpp \
+    find.cpp \
     librarydatabase.cpp \
     librarysystem.cpp \
     main.cpp \
@@ -27,11 +27,11 @@ HEADERS += \
     Administrator.h \
     Newreader.h \
     Reader.h \
-    add.h \
     admcontrol.h \
     book.h \
     database.h \
     datastorage.h \
+    find.h \
     librarydatabase.h \
     librarysystem.h \
     readercol.h \
@@ -41,7 +41,6 @@ HEADERS += \
 FORMS += \
     Administrator.ui \
     Newreader.ui \
-    add.ui \
     admcontrol.ui \
     librarysystem.ui \
     readercol.ui \

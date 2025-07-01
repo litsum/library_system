@@ -42,20 +42,17 @@ public:
     QLabel *resultLabel;
     QWidget *tab_3;
     QLineEdit *name_2;
-    QPushButton *pushButton_6;
     QTableView *tableView_2;
-    QWidget *tab_4;
-    QLineEdit *name_3;
-    QPushButton *pushButton_8;
-    QPushButton *pushButton_9;
+    QComboBox *searchBox;
     QWidget *tab_5;
     QLineEdit *readername_2;
     QLineEdit *readername;
     QPushButton *pushButton_10;
     QPushButton *pushButton_11;
     QPushButton *pushButton_12;
-    QWidget *tab_6;
-    QTableView *tableView;
+    QWidget *tab_2;
+    QLineEdit *name_3;
+    QTableView *tableView_3;
 
     void setupUi(QDialog *admcontrol)
     {
@@ -137,31 +134,13 @@ public:
 "	background-color:rgba(255,255,255,0);\n"
 "	border:none;\n"
 "	border-bottom:1px solid black;}"));
-        pushButton_6 = new QPushButton(tab_3);
-        pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(270, 20, 56, 18));
         tableView_2 = new QTableView(tab_3);
         tableView_2->setObjectName("tableView_2");
         tableView_2->setGeometry(QRect(0, 40, 621, 341));
+        searchBox = new QComboBox(tab_3);
+        searchBox->setObjectName("searchBox");
+        searchBox->setGeometry(QRect(200, 10, 60, 22));
         addbook->addTab(tab_3, QString());
-        tab_4 = new QWidget();
-        tab_4->setObjectName("tab_4");
-        name_3 = new QLineEdit(tab_4);
-        name_3->setObjectName("name_3");
-        name_3->setGeometry(QRect(120, 120, 250, 30));
-        name_3->setMinimumSize(QSize(250, 30));
-        name_3->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-        pushButton_8 = new QPushButton(tab_4);
-        pushButton_8->setObjectName("pushButton_8");
-        pushButton_8->setGeometry(QRect(420, 130, 56, 18));
-        pushButton_9 = new QPushButton(tab_4);
-        pushButton_9->setObjectName("pushButton_9");
-        pushButton_9->setGeometry(QRect(180, 210, 151, 30));
-        pushButton_9->setMinimumSize(QSize(150, 30));
-        addbook->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName("tab_5");
         readername_2 = new QLineEdit(tab_5);
@@ -190,19 +169,27 @@ public:
         pushButton_12->setObjectName("pushButton_12");
         pushButton_12->setGeometry(QRect(400, 180, 56, 18));
         addbook->addTab(tab_5, QString());
-        tab_6 = new QWidget();
-        tab_6->setObjectName("tab_6");
-        tableView = new QTableView(tab_6);
-        tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(0, 0, 611, 371));
-        addbook->addTab(tab_6, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName("tab_2");
+        name_3 = new QLineEdit(tab_2);
+        name_3->setObjectName("name_3");
+        name_3->setGeometry(QRect(0, 10, 250, 30));
+        name_3->setMinimumSize(QSize(250, 30));
+        name_3->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"	background-color:rgba(255,255,255,0);\n"
+"	border:none;\n"
+"	border-bottom:1px solid black;}"));
+        tableView_3 = new QTableView(tab_2);
+        tableView_3->setObjectName("tableView_3");
+        tableView_3->setGeometry(QRect(0, 40, 621, 341));
+        addbook->addTab(tab_2, QString());
 
         retranslateUi(admcontrol);
         QObject::connect(pushButton_2, &QPushButton::clicked, name_1, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_3, &QPushButton::clicked, author, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_4, &QPushButton::clicked, publisher, qOverload<>(&QLineEdit::clear));
 
-        addbook->setCurrentIndex(0);
+        addbook->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(admcontrol);
@@ -220,20 +207,16 @@ public:
         pushButton->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
         resultLabel->setText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\347\261\273\345\210\253\357\274\232", nullptr));
         addbook->setTabText(addbook->indexOf(tab), QCoreApplication::translate("admcontrol", "\346\267\273\345\212\240\344\271\246\347\261\215", nullptr));
-        name_2->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("admcontrol", "\346\220\234\347\264\242", nullptr));
-        addbook->setTabText(addbook->indexOf(tab_3), QCoreApplication::translate("admcontrol", "\345\210\240\351\231\244\344\271\246\347\261\215\357\274\210\345\210\227\350\241\250\345\274\217\357\274\211", nullptr));
-        name_3->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
-        pushButton_9->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
-        addbook->setTabText(addbook->indexOf(tab_4), QCoreApplication::translate("admcontrol", "\346\237\245\346\211\276\344\271\246\347\261\215", nullptr));
+        name_2->setPlaceholderText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\346\220\234\347\264\242\347\233\256\346\240\207\357\274\232", nullptr));
+        addbook->setTabText(addbook->indexOf(tab_3), QCoreApplication::translate("admcontrol", "\344\271\246\347\261\215\346\225\260\346\215\256", nullptr));
         readername_2->setPlaceholderText(QCoreApplication::translate("admcontrol", "\350\247\243\347\246\201\350\257\273\350\200\205\345\220\215\357\274\232", nullptr));
         readername->setPlaceholderText(QCoreApplication::translate("admcontrol", "\345\260\201\347\246\201\350\257\273\350\200\205\345\220\215\357\274\232", nullptr));
         pushButton_10->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         pushButton_11->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
         pushButton_12->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         addbook->setTabText(addbook->indexOf(tab_5), QCoreApplication::translate("admcontrol", "\350\257\273\350\200\205\347\212\266\346\200\201\346\216\247\345\210\266", nullptr));
-        addbook->setTabText(addbook->indexOf(tab_6), QCoreApplication::translate("admcontrol", "\344\271\246\347\261\215\346\225\260\346\215\256", nullptr));
+        name_3->setPlaceholderText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\346\220\234\347\264\242\347\233\256\346\240\207\357\274\232", nullptr));
+        addbook->setTabText(addbook->indexOf(tab_2), QCoreApplication::translate("admcontrol", "\350\257\273\350\200\205\346\225\260\346\215\256", nullptr));
     } // retranslateUi
 
 };

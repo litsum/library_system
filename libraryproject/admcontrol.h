@@ -28,12 +28,9 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-    void on_pushButton_6_clicked();
-    void on_pushButton_11_clicked();
-
-
+    void refreshBookTable();
     void on_comboBox_activated(int index);
-
+    void textchange(int index);
 private:
     Ui::admcontrol *ui;
     QStringList booklist;

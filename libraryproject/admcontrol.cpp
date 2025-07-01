@@ -6,82 +6,113 @@
 #include <QMessageBox>
 #include <QMenu>
 #include <QComboBox>
+#include "find.h"
 
 admcontrol::admcontrol(QWidget *parent)
-    : QDialog(parent), ui(new Ui::admcontrol)
+    : QDialog(parent), ui(new Ui::admcontrol), _model(new QStandardItemModel(this))
 {
     ui->setupUi(this);
-    /*for(auto is=db.books.begin();is<db.books.end();++is){
-        QString bo=QString::fromStdString(is->getName());
-        booklist.append(bo);
-    }
-    model= new QStringListModel(this); //创建数据模型
-    model->setStringList(booklist); //初始化数据
-    ui->listView->setModel(model); //设置数据模型
-    ui->listView->setEditTriggers(QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked);*/
+    refreshBookTable();
 
     _model->setHorizontalHeaderLabels({"ISBN", "书名", "作者","出版社","状态"});
-    int row=0;
-    for(auto is=db.books.begin();is<db.books.end(); ++row,++is) {
-        // 获取图书数据 (根据你的实际数据结构调整)
-        // 创建行数据
-        QList<QStandardItem*> rowItems;
-        // ISBN (第0列)
-        QString isbn = QString::fromStdString(is->getISBN());
-        QStandardItem *isbnItem = new QStandardItem(isbn);
-        isbnItem->setEditable(false); // ISBN通常不可编辑
-        // 书名 (第1列)
-        QString name = QString::fromStdString(is->getName());
-        QStandardItem *nameItem = new QStandardItem(name);
-        // 作者 (第2列)
-        QString author = QString::fromStdString(is->getAuthor());
-        QStandardItem *authorItem = new QStandardItem(author);
-        // 出版社 (第3列)
-        QString publisher = QString::fromStdString(is->getPublisher());
-        QStandardItem *publisherItem = new QStandardItem(publisher);
-        // 状态 (第4列) - 复选框
-        /*QStandardItem *statusItem = new QStandardItem();
-            statusItem->setCheckable(true);
-            statusItem->setCheckState(book.isAvailable ? Qt::Checked : Qt::Unchecked);
-            statusItem->setText(book.isAvailable ? "可借阅" : "已借出"); // 可选的文本显示*/
-        QStandardItem *statusItem = new QStandardItem();
-        statusItem->setCheckable(true);
-        statusItem->setCheckState(row % 2 ? Qt::Checked : Qt::Unchecked);
-        // 添加到行
-        rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
-        // 添加行到模型
-        _model->appendRow(rowItems);
-    }
-        //右键点击功能
-        tableView_2->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(tableView, &QTableView::customContextMenuRequested, [&](const QPoint &pos){
-            QMenu menu;
-            QAction *deleteAction = menu.addAction("删除图书");
-            if (deleteAction == menu.exec(tableView->viewport()->mapToGlobal(pos))) {
-                QModelIndex index = tableView->indexAt(pos);
-                if (index.isValid()) {
-                    QString name = _model->index(index.row(), 1).data().toString();
-                    db.deletebook(name);
-                    _model->removeRow(index.row());
+
+    //下拉选择
+    ui->comboBox->addItem("哲学");
+    ui->comboBox->addItem("艺术");
+    ui->comboBox->addItem("自然科学");
+    ui->comboBox->addItem("社会科学");
+    ui->comboBox->addItem("教育");
+    ui->comboBox->addItem("文学");
+    // 可选：设置搜索列
+    ui->searchBox->addItem("ISBN", 0);
+    ui->searchBox->addItem("书名", 1);
+    ui->searchBox->addItem("作者", 2);
+    ui->searchBox->addItem("出版社", 3);
+
+    // 关联到视图4
+    BookSearchProxyModel *proxyModel = new BookSearchProxyModel(this);
+    proxyModel->setSourceModel(_model);
+    ui->tableView_2->setModel(proxyModel);
+    ui->tableView_2->setSortingEnabled(true);
+
+    // 连接搜索框
+    connect(ui->name_2, &QLineEdit::textChanged,
+            [proxyModel](const QString &text) {
+                proxyModel->setSearchPrefix(text);
+            });
+    connect(ui->searchBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            [proxyModel](int index) {
+                proxyModel->setSearchColumn(index);
+            });
+    connect(ui->searchBox,QOverload<int>::of(&QComboBox::currentIndexChanged),this,
+            &admcontrol::textchange);
+
+    //右键点击功能
+    ui->tableView_2->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->tableView_2, &QTableView::customContextMenuRequested, [this, proxyModel](const QPoint &pos){
+        QMenu menu;
+        QAction *deleteAction = menu.addAction("删除图书");
+        if (deleteAction == menu.exec(ui->tableView_2->viewport()->mapToGlobal(pos))) {
+            QModelIndex index = ui->tableView_2->indexAt(pos);
+            if (index.isValid()) {
+                // 映射到源模型索引
+                QModelIndex sourceIndex = proxyModel->mapToSource(index);
+                if (sourceIndex.isValid()) {
+                    QString name = _model->item(sourceIndex.row(), 1)->text();
+                    if (db.deletebook(name)) {
+                        _model->removeRow(sourceIndex.row());
+                        QMessageBox::information(this, "成功", "图书已删除");
+                    } else {
+                        QMessageBox::warning(this, "错误", "删除图书失败");
+                    }
                 }
             }
-        });
+        }
+    });
 
-        //下拉选择
-        ui->comboBox->addItem("苹果", "fruit");
-        ui->comboBox->addItem("香蕉", "fruit");
-        ui->comboBox->addItem("汽车", "vehicle");
-
-    // 关联到视图
-    ui->tableView->setModel(_model);
-    ui->tableView_2->setModel(_model);
 }
 admcontrol::~admcontrol()
 {
-    delete ui;  // 释放内存
+    delete ui;
 }
 
+void admcontrol::refreshBookTable()
+{
+    _model->removeRows(0, _model->rowCount());
 
+    int row = 0;
+    for(auto is = db.books.begin(); is != db.books.end(); ++is) {
+        QList<QStandardItem*> rowItems;
+
+        // ISBN
+        QString isbn = QString::fromStdString(is->getISBN());
+        QStandardItem *isbnItem = new QStandardItem(isbn);
+        isbnItem->setEditable(false);
+
+        // 书名
+        QString name = QString::fromStdString(is->getName());
+        QStandardItem *nameItem = new QStandardItem(name);
+
+        // 作者
+        QString author = QString::fromStdString(is->getAuthor());
+        QStandardItem *authorItem = new QStandardItem(author);
+
+        // 出版社
+        QString publisher = QString::fromStdString(is->getPublisher());
+        QStandardItem *publisherItem = new QStandardItem(publisher);
+
+        // 状态
+        QStandardItem *statusItem = new QStandardItem();
+        statusItem->setCheckable(true);
+        statusItem->setCheckState(is->isAvailable() ? Qt::Checked : Qt::Unchecked);
+        statusItem->setText(is->isAvailable() ? "可借阅" : "已借出");
+        statusItem->setEditable(false);
+
+        rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
+        _model->appendRow(rowItems);
+        row++;
+    }
+}
 
 void admcontrol::on_pushButton_clicked()
 {
@@ -90,7 +121,7 @@ void admcontrol::on_pushButton_clicked()
     QString publisher = ui->publisher->text();
     QString isbn = ui->resultLabel->text();
 
-    if (name.isEmpty() || author.isEmpty() || publisher.isEmpty() || isbn.isEmpty()) {
+    if (name.isEmpty() || author.isEmpty() || publisher.isEmpty() || isbn=="请选择类别：") {
         QMessageBox::warning(this, "错误", "请填写所有字段！");
         return;
     }
@@ -100,68 +131,33 @@ void admcontrol::on_pushButton_clicked()
     ui->name_1->clear();
     ui->author->clear();
     ui->publisher->clear();
+    refreshBookTable();
 }
 
 
-
-
-void admcontrol::on_pushButton_6_clicked()
-{
-    QString name = ui->name_2->text().toUtf8();
-    if (name.isEmpty()) {
-        QMessageBox::warning(this, "错误", "请填写所有字段！");
-        return;
-    }
-    else  {
-        for(auto it=db.books.begin();it<db.books.end();++it){
-            if(it->getName()==name){
-                db.books.erase(it);
-                QMessageBox::information(this, "成功", "书籍删除成功！");
-                return;
-            }
-        }
-        QMessageBox::information(this,"失败","书籍未找到！");
-        ui->name_2->clear();
+void admcontrol::textchange(int index){
+    switch (index) {
+    case 0:
+        ui->name_2->setPlaceholderText("ISBN:");
+        break;
+    case 1:
+        ui->name_2->setPlaceholderText("书名:");
+        break;
+    case 2:
+        ui->name_2->setPlaceholderText("作者:");
+        break;
+    case 3:
+        ui->name_2->setPlaceholderText("出版社:");
+        break;
+    default:
+        break;
     }
 }
-
-
-void admcontrol::on_pushButton_11_clicked()
-{
-    QString rename = ui->readername->text().toUtf8();
-    QString rename2 = ui->readername_2->text().toUtf8();
-    if (!rename.isEmpty()) {
-        for(auto it=db.readers.begin();it<db.readers.end();it++){
-            if(it->getName()==rename){
-                it->ban();
-                return;
-            }
-            else QMessageBox::information(this,"失败","读者未找到！");
-        }
-        if(!rename2.isEmpty()){
-            for(auto it=db.readers.begin();it<db.readers.end();it++){
-                if(it->getName()==rename){
-                    it->ban();
-                    return;}
-                else QMessageBox::information(this,"失败","读者未找到！");
-            }
-        }
-        QMessageBox::warning(this, "错误", "请填写所有字段！");
-    }
-}
-
-
-
 
 void admcontrol::on_comboBox_activated(int index)
 {
     QString text = ui->comboBox->itemText(index);
-    QString type = ui->comboBox->itemData(index).toString();
-
-    QString result = QString("您选择了: %1 (类型: %2)")
-                         .arg(text).arg(type);
+    QString result = QString("%1").arg(text);
     ui->resultLabel->setText(result);
-
-    qDebug() << "选择结果:" << result;
 }
 

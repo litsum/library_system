@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
@@ -31,7 +32,7 @@ public:
     QWidget *tab_2;
     QTableView *tableView;
     QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QComboBox *comboBox;
     QWidget *tab_3;
     QWidget *tab_4;
     QLineEdit *lineEdit_2;
@@ -44,7 +45,7 @@ public:
         readercol->resize(599, 374);
         tabWidget = new QTabWidget(readercol);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(0, 10, 591, 361));
+        tabWidget->setGeometry(QRect(0, 0, 591, 371));
         tab = new QWidget();
         tab->setObjectName("tab");
         listView = new QListView(tab);
@@ -55,13 +56,13 @@ public:
         tab_2->setObjectName("tab_2");
         tableView = new QTableView(tab_2);
         tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(0, 30, 591, 311));
+        tableView->setGeometry(QRect(0, 20, 591, 321));
         lineEdit = new QLineEdit(tab_2);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(0, 10, 221, 21));
-        pushButton = new QPushButton(tab_2);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(230, 10, 56, 18));
+        lineEdit->setGeometry(QRect(0, 0, 231, 21));
+        comboBox = new QComboBox(tab_2);
+        comboBox->setObjectName("comboBox");
+        comboBox->setGeometry(QRect(160, 0, 60, 22));
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
@@ -89,7 +90,6 @@ public:
         readercol->setWindowTitle(QCoreApplication::translate("readercol", "\350\257\273\350\200\205", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("readercol", "\344\271\246\346\236\266", nullptr));
         lineEdit->setPlaceholderText(QCoreApplication::translate("readercol", "\350\257\267\350\276\223\345\205\245\344\271\246\345\220\215\357\274\232", nullptr));
-        pushButton->setText(QCoreApplication::translate("readercol", "\346\220\234\347\264\242", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("readercol", "\344\271\246\345\237\216", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("readercol", "\350\264\246\346\210\267\347\212\266\346\200\201", nullptr));
         lineEdit_2->setPlaceholderText(QCoreApplication::translate("readercol", "\350\257\267\350\276\223\345\205\245\345\206\205\345\256\271\357\274\232", nullptr));

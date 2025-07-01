@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>10</y>
+     <y>0</y>
      <width>591</width>
-     <height>361</height>
+     <height>371</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -48,9 +48,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>30</y>
+       <y>20</y>
        <width>591</width>
-       <height>311</height>
+       <height>321</height>
       </rect>
      </property>
     </widget>
@@ -58,8 +58,8 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>10</y>
-       <width>221</width>
+       <y>0</y>
+       <width>231</width>
        <height>21</height>
       </rect>
      </property>
@@ -67,17 +67,14 @@
       <string>请输入书名：</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>10</y>
-       <width>56</width>
-       <height>18</height>
+       <x>160</x>
+       <y>0</y>
+       <width>60</width>
+       <height>22</height>
       </rect>
-     </property>
-     <property name="text">
-      <string>搜索</string>
      </property>
     </widget>
    </widget>

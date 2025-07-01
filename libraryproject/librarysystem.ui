@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Widget</string>
+   <string>welcome!</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -29,14 +29,14 @@
   <widget class="QPushButton" name="close">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>355</x>
      <y>290</y>
-     <width>56</width>
-     <height>18</height>
+     <width>101</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>保存</string>
+    <string>保存并退出</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ad">

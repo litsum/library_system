@@ -93,7 +93,7 @@ public:
         ad->setText(QCoreApplication::translate("LibrarySystem", "\347\256\241\347\220\206\345\221\230\347\231\273\345\205\245", nullptr));
         re->setText(QCoreApplication::translate("LibrarySystem", "\350\257\273\350\200\205\347\231\273\345\205\245", nullptr));
         backgroud_1->setText(QString());
-        backgroud_2->setText(QCoreApplication::translate("LibrarySystem", "\345\233\276\344\271\246\351\246\206\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
+        backgroud_2->setText(QString());
     } // retranslateUi
 
 };

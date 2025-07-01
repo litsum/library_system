@@ -189,7 +189,7 @@ public:
         QObject::connect(pushButton_3, &QPushButton::clicked, author, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_4, &QPushButton::clicked, publisher, qOverload<>(&QLineEdit::clear));
 
-        addbook->setCurrentIndex(3);
+        addbook->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(admcontrol);

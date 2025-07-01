@@ -35,7 +35,6 @@
 #define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
 #define __cpp_variadic_templates 200704L
 #define __UINT_FAST64_MAX__ 0xffffffffffffffffULL
-#define __SIG_ATOMIC_TYPE__ int
 #define __DBL_MIN_10_EXP__ (-307)
 #define __FINITE_MATH_ONLY__ 0
 #define __cpp_variable_templates 201304L
@@ -246,6 +245,7 @@
 #define __GNUC_WIDE_EXECUTION_CHARSET_NAME "UTF-16LE"
 #define __FLT64X_DIG__ 18
 #define __INT8_TYPE__ signed char
+#define __SIG_ATOMIC_TYPE__ int
 #define __cpp_digit_separators 201309L
 #define __GCC_ASM_FLAG_OUTPUTS__ 1
 #define __UINT32_TYPE__ unsigned int

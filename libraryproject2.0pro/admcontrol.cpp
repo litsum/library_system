@@ -43,8 +43,8 @@ admcontrol::admcontrol(QWidget *parent)
         // 状态 (第4列) - 复选框
         QStandardItem *statusItem = new QStandardItem();
         statusItem->setCheckable(true);
-        statusItem->setCheckState(books.isAvailable ? Qt::Checked : Qt::Unchecked);
-        statusItem->setText(books.isAvailable ? "可借阅" : "已借出"); // 可选的文本显示
+        statusItem->setCheckState(is->isAvailable() ? Qt::Checked : Qt::Unchecked);
+        statusItem->setText(is->isAvailable() ? "可借阅" : "已借出"); // 可选的文本显示
         // 添加到行
         rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
         // 添加行到模型

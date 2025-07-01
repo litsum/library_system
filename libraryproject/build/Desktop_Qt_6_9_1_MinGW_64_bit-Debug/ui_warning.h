@@ -23,6 +23,7 @@ public:
     QLabel *label;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QLabel *label_2;
 
     void setupUi(QDialog *warning)
     {
@@ -34,10 +35,29 @@ public:
         label->setGeometry(QRect(10, 50, 381, 141));
         pushButton = new QPushButton(warning);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(90, 200, 56, 18));
+        pushButton->setGeometry(QRect(70, 170, 100, 40));
+        QFont font;
+        font.setPointSize(14);
+        pushButton->setFont(font);
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 204, 113);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:10px ;"));
         pushButton_2 = new QPushButton(warning);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(240, 200, 56, 18));
+        pushButton_2->setGeometry(QRect(210, 170, 100, 40));
+        pushButton_2->setFont(font);
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(189, 195, 199);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:10px ;"));
+        label_2 = new QLabel(warning);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(0, 0, 400, 300));
+        label_2->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
+"background-color: rgb(248, 248, 248);"));
+        label_2->raise();
+        label->raise();
+        pushButton->raise();
+        pushButton_2->raise();
 
         retranslateUi(warning);
 
@@ -50,6 +70,7 @@ public:
         label->setText(QCoreApplication::translate("warning", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">\346\202\250\350\277\230\346\234\252\344\277\235\345\255\230\357\274\214\346\230\257\345\220\246\350\246\201\344\277\235\345\255\230\345\271\266\351\200\200\345\207\272\357\274\232</span></p></body></html>", nullptr));
         pushButton->setText(QCoreApplication::translate("warning", "\347\241\256\345\256\232", nullptr));
         pushButton_2->setText(QCoreApplication::translate("warning", "\345\217\226\346\266\210", nullptr));
+        label_2->setText(QString());
     } // retranslateUi
 
 };

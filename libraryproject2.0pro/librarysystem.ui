@@ -148,7 +148,7 @@ border-radius:5px ;</string>
     <string notr="true">background-color: rgb(52, 73, 94);</string>
    </property>
    <property name="text">
-    <string>图书馆管理系统</string>
+    <string/>
    </property>
   </widget>
   <zorder>backgroud_2</zorder>

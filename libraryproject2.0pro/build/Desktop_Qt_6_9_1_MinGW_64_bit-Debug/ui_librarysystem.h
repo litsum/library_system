@@ -35,7 +35,7 @@ public:
         LibrarySystem->setStyleSheet(QString::fromUtf8(""));
         label = new QLabel(LibrarySystem);
         label->setObjectName("label");
-        label->setGeometry(QRect(150, 50, 281, 61));
+        label->setGeometry(QRect(150, 60, 281, 61));
         label->setStyleSheet(QString::fromUtf8(""));
         close = new QPushButton(LibrarySystem);
         close->setObjectName("close");
@@ -47,7 +47,7 @@ public:
 "border-radius:30px ;"));
         ad = new QPushButton(LibrarySystem);
         ad->setObjectName("ad");
-        ad->setGeometry(QRect(170, 150, 250, 51));
+        ad->setGeometry(QRect(170, 160, 250, 51));
         ad->setMinimumSize(QSize(250, 45));
         QFont font1;
         font1.setPointSize(18);
@@ -58,7 +58,7 @@ public:
         ad->setIconSize(QSize(200, 100));
         re = new QPushButton(LibrarySystem);
         re->setObjectName("re");
-        re->setGeometry(QRect(170, 230, 250, 51));
+        re->setGeometry(QRect(170, 240, 250, 51));
         re->setMinimumSize(QSize(250, 45));
         re->setFont(font1);
         re->setStyleSheet(QString::fromUtf8("background-color: rgb(64, 158, 255);\n"
@@ -66,9 +66,9 @@ public:
 "border-radius:10px ;"));
         backgroud_1 = new QLabel(LibrarySystem);
         backgroud_1->setObjectName("backgroud_1");
-        backgroud_1->setGeometry(QRect(30, 20, 531, 361));
+        backgroud_1->setGeometry(QRect(26, 20, 548, 361));
         backgroud_1->setStyleSheet(QString::fromUtf8("background-color: rgb(26, 188, 156);\n"
-"border-radius:20px ;"));
+"border-radius:5px ;"));
         backgroud_2 = new QLabel(LibrarySystem);
         backgroud_2->setObjectName("backgroud_2");
         backgroud_2->setGeometry(QRect(0, 0, 600, 400));

@@ -38,7 +38,7 @@ public:
         if (Administrator->objectName().isEmpty())
             Administrator->setObjectName("Administrator");
         Administrator->resize(700, 500);
-        Administrator->setMinimumSize(QSize(637, 440));
+        Administrator->setMinimumSize(QSize(700, 500));
         Administrator->setMaximumSize(QSize(700, 500));
         QFont font;
         font.setPointSize(15);
@@ -51,7 +51,7 @@ public:
         frame->setFrameShadow(QFrame::Shadow::Raised);
         frame_2 = new QFrame(frame);
         frame_2->setObjectName("frame_2");
-        frame_2->setGeometry(QRect(10, 40, 280, 300));
+        frame_2->setGeometry(QRect(10, 40, 285, 300));
         frame_2->setMinimumSize(QSize(280, 300));
         frame_2->setStyleSheet(QString::fromUtf8("#frame_2{\n"
 "background-color: qlineargradient(spread:pad, x1:0.698864, y1:0.565, x2:1, y2:1, stop:0 rgba(103, 72, 197, 255), stop:1 rgba(255, 255, 255, 255));\n"
@@ -68,7 +68,7 @@ public:
         label->setFont(font1);
         frame_3 = new QFrame(frame);
         frame_3->setObjectName("frame_3");
-        frame_3->setGeometry(QRect(290, 40, 280, 301));
+        frame_3->setGeometry(QRect(290, 40, 285, 300));
         frame_3->setMinimumSize(QSize(280, 280));
         frame_3->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
 "background-color: rgb(237, 239, 241);"));

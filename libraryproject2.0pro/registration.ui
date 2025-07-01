@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>700</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,15 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>30</y>
-     <width>321</width>
+     <x>280</x>
+     <y>130</y>
+     <width>351</width>
      <height>241</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:10px ;
+background-color: rgb(237, 239, 241);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Shape::StyledPanel</enum>
@@ -32,9 +36,9 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>30</y>
-      <width>200</width>
-      <height>31</height>
+      <y>40</y>
+      <width>240</width>
+      <height>45</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -43,11 +47,15 @@
       <height>30</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
+     <string notr="true">border-radius:10px ;
+color: rgb(183, 183, 183);
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::EchoMode::Normal</enum>
@@ -61,8 +69,8 @@
      <rect>
       <x>60</x>
       <y>100</y>
-      <width>200</width>
-      <height>31</height>
+      <width>240</width>
+      <height>45</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -71,11 +79,15 @@
       <height>30</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
+     <string notr="true">border-radius:10px ;
+color: rgb(183, 183, 183);
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::EchoMode::Password</enum>
@@ -87,10 +99,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>196</x>
       <y>160</y>
-      <width>70</width>
-      <height>21</height>
+      <width>105</width>
+      <height>45</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -98,6 +110,15 @@
       <width>70</width>
       <height>20</height>
      </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(26, 188, 156);
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>登录</string>
@@ -106,10 +127,10 @@
    <widget class="QPushButton" name="reg">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>60</x>
       <y>160</y>
-      <width>70</width>
-      <height>21</height>
+      <width>105</width>
+      <height>45</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -118,11 +139,116 @@
       <height>20</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(46, 204, 113);
+color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>新用户注册</string>
     </property>
    </widget>
+   <widget class="QLabel" name="accout_pic">
+    <property name="geometry">
+     <rect>
+      <x>254</x>
+      <y>45</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/zhanghu.png);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password_pic">
+    <property name="geometry">
+     <rect>
+      <x>254</x>
+      <y>106</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/mima.png);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
+  <widget class="QLabel" name="Adm_backgroud">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(52, 73, 94);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>140</y>
+     <width>191</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/reg_1.png);
+
+border-radius:10px ;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>298</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>欢迎读者登录</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>Adm_backgroud</zorder>
+  <zorder>frame</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
  </widget>
  <resources/>
  <connections/>

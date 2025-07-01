@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>library_pic.png</file>
+        <file>zhanghu.png</file>
+        <file>mima.png</file>
+    </qresource>
+</RCC>

@@ -7,11 +7,13 @@
 #include <qstring>
 #include <QStringListModel>
 #include "book.h"
+#include <QDate>
 
 class reader { // 类名改为驼峰命名
 public:
     // 默认构造函数（若需要）
     reader() = default;
+    bool isVip() const { return is_vip_; }
 
     // 构造函数
     reader(const std::string& name, const std::string& password)
@@ -41,6 +43,17 @@ public:
         }
         return *this;
     }
+    // 添加借书记录方法
+    void borrowBook(const std::string& isbn, const QDate& borrowDate, const QDate& deadline) {
+        borrowedBooks_.push_back(isbn);
+        borrowDates_.push_back(borrowDate);
+        deadlines_.push_back(deadline);
+    }
+
+    // 获取借阅记录
+    const std::vector<std::string>& getBorrowedBooks() const { return borrowedBooks_; }
+    const std::vector<QDate>& getBorrowDates() const { return borrowDates_; }
+    const std::vector<QDate>& getDeadlines() const { return deadlines_; }
 
     ~reader(){}; // 使用=default显式声明析构函数
 
@@ -51,8 +64,6 @@ public:
     bool isLocked() const { return stat_; }
 
 
-    // 修改器
-    void setDebt(int amount) { debt_ = amount; }
     void setLocked() { stat_ = 1; }
     void setUnlocked() { stat_ = 0; }
 
@@ -64,16 +75,11 @@ public:
         }
         return booklist;
     }
-    const std::vector<std::string>& getBorrowedBooks() const {
-        return borrowedBooks_;
-    }
     void addlist(std::string BO){
         QString bo=QString::fromStdString(BO);
         booklist.append(bo);
     }
-    void borrowBook(const std::string& bookId) {
-        borrowedBooks_.push_back(bookId);
-    }
+
     bool returnBook(const std::string& bookId) {
         for (auto it = borrowedBooks_.begin(); it != borrowedBooks_.end(); ++it) {
             if (*it == bookId) {
@@ -89,6 +95,11 @@ public:
             else ++it;
         }
     }
+    // 设置债务时自动更新VIP状态
+    void setDebt(int amount) {
+        debt_ = amount;
+        is_vip_ = (amount == 0); // debt为0时是VIP，否则不是
+    }
     void ban(){valid = 0;}//封禁读者
 
     void recover(){valid=1;}//解禁读者
@@ -102,7 +113,10 @@ private:
     int valid ;// 重命名为更清晰的名称
     int debt_ ; // C++11后可直接初始化
     int stat_ ;
+    bool is_vip_ = true; // 默认是VIP
     QStringList booklist;
+    std::vector<QDate> borrowDates_;    // 借阅日期
+    std::vector<QDate> deadlines_;      // 到期日期
 };
 
 #endif // READER_H

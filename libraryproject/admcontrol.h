@@ -35,9 +35,10 @@ private:
     Ui::admcontrol *ui;
     QStringList booklist;
     QStringListModel *model;
-    QStandardItemModel *_model = new QStandardItemModel(0, 5);
+    QStandardItemModel *_model;
     QTableView *tableView = new QTableView;
     QTableView *tableView_2 = new QTableView;
+    QLineEdit *isbnEdit;
 };
 
 #endif

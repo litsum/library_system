@@ -7,6 +7,7 @@
 #include <QStandardItem>
 #include <QHeaderView>
 #include "find.h"
+#include <QDate>
 
 readercol::readercol(QWidget *parent)
     : QDialog(parent), ui(new Ui::readercol)
@@ -92,7 +93,9 @@ readercol::readercol(QWidget *parent)
 
                     if(bookIt != db.books.end()) {
                         if(bookIt->isAvailable()) {
-                            currentReader->borrowBook(Name);
+                            QDate borrowDate = QDate::currentDate();
+                            QDate deadlineDate = borrowDate.addDays(currentReader->isVip() ? 30 : 10);
+                            currentReader->borrowBook(Name, borrowDate, deadlineDate);
                             bookIt->setAvailable(false);
                             QMessageBox::information(this, "成功", "借阅成功!");
                             refreshBookList();
@@ -120,13 +123,14 @@ readercol::~readercol()
 void readercol::loadAllBooks()
 {
     _model->removeRows(0, _model->rowCount());
+    _model->setHorizontalHeaderLabels({"ISBN", "书名", "作者", "出版社", "状态", "借阅日期", "到期日期"});
 
     int row = 0;
     for(const auto &book : db.books) {
         QList<QStandardItem*> rowItems;
 
         // ISBN
-        QString isbn = QString::fromStdString(book.getISBN());
+        QString isbn = QString::fromStdString(book.getisbn());
         QStandardItem *isbnItem = new QStandardItem(isbn);
         isbnItem->setEditable(false);
 
@@ -148,8 +152,29 @@ void readercol::loadAllBooks()
         statusItem->setCheckState(book.isAvailable() ? Qt::Checked : Qt::Unchecked);
         statusItem->setText(book.isAvailable() ? "可借阅" : "已借出");
         statusItem->setEditable(false);
+        // 添加借阅日期和到期日期
+        QStandardItem *borrowDateItem = new QStandardItem();
+        QStandardItem *deadlineItem = new QStandardItem();
 
-        rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
+        // 查找借阅记录
+        for (size_t i = 0; i < db.readers.size(); i++) {
+            const auto& borrowedBooks = db.readers[i].getBorrowedBooks();
+            auto it = std::find(borrowedBooks.begin(), borrowedBooks.end(), book.getisbn());
+
+            if (it != borrowedBooks.end()) {
+                size_t index = std::distance(borrowedBooks.begin(), it);
+                borrowDateItem->setText(db.readers[i].getBorrowDates()[index].toString("yyyy-MM-dd"));
+                deadlineItem->setText(db.readers[i].getDeadlines()[index].toString("yyyy-MM-dd"));
+
+                // 检查是否逾期
+                if (QDate::currentDate() > db.readers[i].getDeadlines()[index]) {
+                    deadlineItem->setForeground(QBrush(Qt::red));
+                }
+                break;
+            }
+        }
+
+        rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem << borrowDateItem << deadlineItem;
         _model->appendRow(rowItems);
         row++;
     }
@@ -185,7 +210,9 @@ void readercol::showContextMenu(const QPoint &pos)
 
         if(bookIt != db.books.end()) {
             if(bookIt->isAvailable()) {
-                currentReader->borrowBook(bookNameStr);
+                QDate borrowDate = QDate::currentDate();
+                QDate deadlineDate = borrowDate.addDays(currentReader->isVip() ? 30 : 10);
+                currentReader->borrowBook(bookNameStr, borrowDate, deadlineDate);
                 bookIt->setAvailable(false);
                 QMessageBox::information(this, "成功", "借阅成功!");
                 refreshBookList();
@@ -208,7 +235,7 @@ void readercol::showReturnMenu(const QPoint &pos)
     std::string bookNameStr = bookName.toStdString();
 
     QMenu menu;
-    QAction *returnAction = menu.addAction("归还图书");
+    menu.addAction("归还图书");
 
     if(menu.exec(ui->listView->viewport()->mapToGlobal(pos))) {
         for(auto bookIt=db.books.begin();bookIt!=db.books.end();++bookIt)
@@ -227,9 +254,25 @@ void readercol::showReturnMenu(const QPoint &pos)
 
 void readercol::refreshBookList()
 {
-    if(currentReader) {
-        model->setStringList(currentReader->borrowbooklist());
+    if (!currentReader) return;
+
+    model->removeRows(0, model->rowCount());
+    QStringList bookList;
+
+    for (size_t i = 0; i < currentReader->getBorrowedBooks().size(); i++) {
+        QString bookInfo = QString("%1 (借于: %2, 到期: %3)")
+                               .arg(QString::fromStdString(currentReader->getBorrowedBooks()[i]))
+                               .arg(currentReader->getBorrowDates()[i].toString("yyyy-MM-dd"))
+                               .arg(currentReader->getDeadlines()[i].toString("yyyy-MM-dd"));
+
+        // 高亮显示逾期书籍
+        if (QDate::currentDate() > currentReader->getDeadlines()[i]) {
+            bookInfo = "<font color='red'>" + bookInfo + "</font>";
+        }
+
+        bookList.append(bookInfo);
     }
+    model->setStringList(bookList);
 }
 
 void readercol::textchange(int index){
@@ -258,3 +301,42 @@ void readercol::on_pushButton_2_clicked()
 
 }
 
+// readercol.cpp
+void readercol::borrowBook(const std::string& bookId, const QDate& borrowDate, const QDate& deadline) {
+    if (!currentReader) return;
+    /*QDate deadlineDate;
+    if (currentReader->isVip()) {
+        deadlineDate = borrowDate.addDays(30); // VIP借30天
+    } else {
+        deadlineDate = borrowDate.addDays(10); // 非VIP借10天
+    }*/
+    QDate deadlineDate = borrowDate.addDays(currentReader->isVip() ? 30 : 10);
+    // 更新内存对象
+    currentReader->borrowBook(bookId, borrowDate, deadlineDate);
+
+    // 更新书籍状态
+    auto bookIt = std::find_if(db.books.begin(), db.books.end(),
+                               [&](const Book& b) { return b.getisbn() == bookId; });
+
+    if (bookIt != db.books.end()) {
+        bookIt->setAvailable(false);
+    }
+
+    // 刷新界面
+    refreshBookList();
+    loadAllBooks();
+
+    // 保存到数据库
+    QSqlQuery query;
+    query.prepare(
+        "INSERT INTO borrowed_books (reader_name, book_id, borrowtime, deadline) "
+        "VALUES (:name, :book_id, :borrowtime, :deadline)");
+    query.bindValue(":name", QString::fromStdString(currentReader->getName()));
+    query.bindValue(":book_id", QString::fromStdString(bookId));
+    query.bindValue(":borrowtime", borrowDate.toString(Qt::ISODate));
+    query.bindValue(":deadline", deadlineDate.toString(Qt::ISODate));
+    if (!query.exec()) {
+        qDebug() << "Borrow book insert error:" << query.lastError().text();
+    }
+    // 更新内存对象
+}

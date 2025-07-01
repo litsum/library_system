@@ -35,7 +35,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -45,7 +45,7 @@
      <property name="geometry">
       <rect>
        <x>430</x>
-       <y>120</y>
+       <y>100</y>
        <width>56</width>
        <height>18</height>
       </rect>
@@ -121,6 +121,28 @@
         </property>
        </widget>
       </item>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QLineEdit" name="isbnEdit">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+	background-color:rgba(255,255,255,0);
+	border:none;
+	border-bottom:1px solid black;}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+        </property>
+        <property name="placeholderText">
+         <string>ISBN：</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
     <widget class="QPushButton" name="pushButton_2">
@@ -140,7 +162,7 @@
      <property name="geometry">
       <rect>
        <x>430</x>
-       <y>180</y>
+       <y>140</y>
        <width>56</width>
        <height>18</height>
       </rect>
@@ -201,6 +223,31 @@
      </property>
      <property name="text">
       <string>请选择类别：</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>190</y>
+       <width>56</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>56</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>56</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>清空</string>
      </property>
     </widget>
    </widget>
@@ -415,12 +462,12 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>447</x>
-     <y>140</y>
+     <x>448</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>328</x>
-     <y>145</y>
+     <x>351</x>
+     <y>134</y>
     </hint>
    </hints>
   </connection>
@@ -431,12 +478,28 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>443</x>
-     <y>198</y>
+     <x>444</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
-     <x>323</x>
-     <y>203</y>
+     <x>351</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>isbnEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>311</x>
+     <y>222</y>
     </hint>
    </hints>
   </connection>

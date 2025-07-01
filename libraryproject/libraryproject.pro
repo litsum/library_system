@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,7 +15,6 @@ SOURCES += \
     Newreader.cpp \
     admcontrol.cpp \
     database.cpp \
-    datastorage.cpp \
     find.cpp \
     librarydatabase.cpp \
     librarysystem.cpp \
@@ -30,7 +30,6 @@ HEADERS += \
     admcontrol.h \
     book.h \
     database.h \
-    datastorage.h \
     find.h \
     librarydatabase.h \
     librarysystem.h \

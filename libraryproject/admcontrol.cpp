@@ -7,14 +7,16 @@
 #include <QMenu>
 #include <QComboBox>
 #include "find.h"
+#include "librarydatabase.h"
 
 admcontrol::admcontrol(QWidget *parent)
     : QDialog(parent), ui(new Ui::admcontrol), _model(new QStandardItemModel(this))
 {
     ui->setupUi(this);
+    isbnEdit = findChild<QLineEdit*>("isbnEdit"); // 获取ISBN输入框
     refreshBookTable();
 
-    _model->setHorizontalHeaderLabels({"ISBN", "书名", "作者","出版社","状态"});
+    _model->setHorizontalHeaderLabels({"ISBN", "书名", "作者","出版社","类型","状态"});
 
     //下拉选择
     ui->comboBox->addItem("哲学");
@@ -80,37 +82,47 @@ void admcontrol::refreshBookTable()
 {
     _model->removeRows(0, _model->rowCount());
 
-    int row = 0;
-    for(auto is = db.books.begin(); is != db.books.end(); ++is) {
+    QSqlQuery query("SELECT * FROM books", LibraryDatabase::getInstance().getDatabase());
+
+    while (query.next()) {
         QList<QStandardItem*> rowItems;
 
         // ISBN
-        QString isbn = QString::fromStdString(is->getISBN());
-        QStandardItem *isbnItem = new QStandardItem(isbn);
-        isbnItem->setEditable(false);
+        QString isbn = query.value("isbn").toString();
+        rowItems << new QStandardItem(isbn);
 
         // 书名
-        QString name = QString::fromStdString(is->getName());
-        QStandardItem *nameItem = new QStandardItem(name);
+        QString name = query.value("name").toString();
+        rowItems << new QStandardItem(name);
 
         // 作者
-        QString author = QString::fromStdString(is->getAuthor());
-        QStandardItem *authorItem = new QStandardItem(author);
+        QString author = query.value("author").toString();
+        rowItems << new QStandardItem(author);
 
         // 出版社
-        QString publisher = QString::fromStdString(is->getPublisher());
-        QStandardItem *publisherItem = new QStandardItem(publisher);
+        QString publisher = query.value("publisher").toString();
+        rowItems << new QStandardItem(publisher);
 
-        // 状态
+        // 类型
+        QString type = query.value("type").toString();
+        rowItems << new QStandardItem(type);
+
+        // 状态（需要根据借阅记录计算）
+        bool available = true;
+        QSqlQuery borrowQuery;
+        borrowQuery.prepare("SELECT COUNT(*) FROM borrowed_books WHERE book_id = :isbn");
+        borrowQuery.bindValue(":isbn", isbn);
+        if (borrowQuery.exec() && borrowQuery.next()) {
+            available = (borrowQuery.value(0).toInt() == 0);
+        }
+
         QStandardItem *statusItem = new QStandardItem();
         statusItem->setCheckable(true);
-        statusItem->setCheckState(is->isAvailable() ? Qt::Checked : Qt::Unchecked);
-        statusItem->setText(is->isAvailable() ? "可借阅" : "已借出");
-        statusItem->setEditable(false);
+        statusItem->setCheckState(available ? Qt::Checked : Qt::Unchecked);
+        statusItem->setText(available ? "可借阅" : "已借出");
+        rowItems << statusItem;
 
-        rowItems << isbnItem << nameItem << authorItem << publisherItem << statusItem;
         _model->appendRow(rowItems);
-        row++;
     }
 }
 
@@ -119,18 +131,36 @@ void admcontrol::on_pushButton_clicked()
     QString name = ui->name_1->text().toUtf8();
     QString author = ui->author->text();
     QString publisher = ui->publisher->text();
-    QString isbn = ui->resultLabel->text();
+    QString isbn = isbnEdit->text(); // 获取ISBN输入
+    QString type = ui->resultLabel->text();
 
-    if (name.isEmpty() || author.isEmpty() || publisher.isEmpty() || isbn=="请选择类别：") {
+    if (name.isEmpty() || author.isEmpty() || publisher.isEmpty() ||
+        isbn.isEmpty() || type == "请选择类别：") {
         QMessageBox::warning(this, "错误", "请填写所有字段！");
         return;
     }
-    Book newBook(name.toStdString(), author.toStdString(), publisher.toStdString(),isbn.toStdString());
+    Book newBook(name.toStdString(), author.toStdString(),
+                 publisher.toStdString(),isbn.toStdString(),type.toStdString());
+    // 保存到数据库
+    QSqlQuery query(LibraryDatabase::getInstance().getDatabase());
+    query.prepare("INSERT INTO books (isbn, name, author, type, publisher) "
+                  "VALUES (:isbn, :name, :author, :type, :publisher)");
+    query.bindValue(":isbn", isbn);
+    query.bindValue(":name", name);
+    query.bindValue(":author", author);
+    query.bindValue(":type", type);
+    query.bindValue(":publisher", publisher);
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "错误", "添加书籍失败: " + query.lastError().text());
+        return;
+    }
     db.books.push_back(newBook);
     QMessageBox::information(this, "成功", "书籍添加成功！");
     ui->name_1->clear();
     ui->author->clear();
     ui->publisher->clear();
+    isbnEdit->clear();
     refreshBookTable();
 }
 

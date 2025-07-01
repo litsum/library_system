@@ -6,8 +6,10 @@ class Book
 {
 public:
     // 构造函数
-    Book(const std::string& name, const std::string& author, const std::string& publisher, const std::string& isbn)
-         : name(name), author(author), publisher(publisher),ISBN(isbn) {
+    Book(const std::string& name, const std::string& author,
+         const std::string& publisher, const std::string& isbn,
+         const std::string& type)
+        : name(name), author(author), publisher(publisher),ISBN(isbn),type(type) {
          }
     // 获取书名
     std::string getName() const { return name; }
@@ -17,7 +19,8 @@ public:
     std::string getPublisher() const { return publisher; }
     // 获取isbn
     std::string getisbn() const { return ISBN;}
-    std::string getISBN() const { return ISBN;}
+    std::string getType() const { return type; }
+    void setType(const std::string& t) { type = t; }
     bool isAvailable() const { return available; }
     void setAvailable(bool avail) { available = avail; }
 private:
@@ -25,6 +28,7 @@ private:
     std::string author;    // 作者
     std::string publisher; // 出版社
     std::string ISBN;
+    std::string type;
     bool available = true;    // ISBN号
 };
 

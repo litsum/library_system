@@ -2,8 +2,13 @@
 #ifndef LIBRARYDATABASE_H
 #define LIBRARYDATABASE_H
 
-#include "datastorage.h"
 #include <QString>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <vector>
+#include "Reader.h"
+#include "book.h"
 
 class LibraryDatabase {
 public:
@@ -12,6 +17,10 @@ public:
         static LibraryDatabase instance;
         return instance;
     }
+    void setDatabase(const QSqlDatabase& database) {
+        db = database;
+    }
+    QSqlDatabase& getDatabase() { return db; } // 添加这个方法
 
     // 禁止拷贝
     LibraryDatabase(const LibraryDatabase&) = delete;
@@ -21,7 +30,7 @@ public:
     bool loadData();
 
     // 保存数据
-    bool saveData() const;
+    bool saveData();
 
     // 获取数据
     std::vector<reader>& getReaders() { return readers; }
@@ -30,18 +39,21 @@ public:
     std::vector<Book> books;
     int total=books.size();
     bool deletebook(QString name){
-        for(auto is=books.begin();is<books.end();++is){
-            std::string Name = name.toUtf8().toStdString();
-            if(Name==is->getName()){
-                books.erase(is);
-                return true;
-            }
+        std::string searchName = name.toStdString();
+        auto it = std::remove_if(books.begin(), books.end(),
+                                 [&](const Book& b) { return b.getName() == searchName; });
+
+        if (it != books.end()) {
+            books.erase(it, books.end());
+            return true;
         }
         return false;
     }
 private:
     // 私有构造函数
     LibraryDatabase() = default;
+    ~LibraryDatabase();
+    QSqlDatabase db;
 // 文件名常量
 
 

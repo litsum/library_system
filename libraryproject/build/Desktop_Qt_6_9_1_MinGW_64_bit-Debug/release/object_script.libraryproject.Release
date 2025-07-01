@@ -2,7 +2,6 @@ release/Administrator.o
 release/Newreader.o
 release/admcontrol.o
 release/database.o
-release/datastorage.o
 release/find.o
 release/librarydatabase.o
 release/librarysystem.o

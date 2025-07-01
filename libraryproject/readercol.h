@@ -29,7 +29,7 @@ private slots:
 private:
     Ui::readercol *ui;
     QStringListModel *model;
-    QStandardItemModel *_model = new QStandardItemModel(0, 5);
+    QStandardItemModel *_model = new QStandardItemModel(0, 7);
     QTableView *tableView = new QTableView;
     reader *currentReader = nullptr;  // 当前登录的读者指针
 
@@ -37,6 +37,7 @@ private:
     void loadAllBooks();
     void showContextMenu(const QPoint &pos);
     void showReturnMenu(const QPoint &pos);
+    void borrowBook(const std::string& bookId, const QDate& borrowDate, const QDate& deadline);
 };
 
 

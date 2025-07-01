@@ -2,7 +2,6 @@ debug/Administrator.o
 debug/Newreader.o
 debug/admcontrol.o
 debug/database.o
-debug/datastorage.o
 debug/find.o
 debug/librarydatabase.o
 debug/librarysystem.o

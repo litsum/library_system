@@ -35,15 +35,7 @@ void Widget::on_ad_clicked()
     }
 }
 
-void Widget::on_close_clicked()
-{
-    if (db.saveData()) {
-        QMessageBox::information(this, "保存成功", "数据已成功保存。");
-    } else {
-        QMessageBox::critical(this, "保存失败", "无法保存数据到文件！");
-    }
-    close(); // 关闭主窗口
-}
+
 
 void Widget::on_re_clicked()
 {

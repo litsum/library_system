@@ -20,7 +20,6 @@ public:
 private slots:
 
     void on_ad_clicked();
-    void on_close_clicked();
     void on_re_clicked();
 
 private:

@@ -21,7 +21,6 @@ class Ui_LibrarySystem
 {
 public:
     QLabel *label;
-    QPushButton *close;
     QPushButton *ad;
     QPushButton *re;
     QLabel *backgroud_1;
@@ -37,21 +36,13 @@ public:
         label->setObjectName("label");
         label->setGeometry(QRect(150, 60, 281, 61));
         label->setStyleSheet(QString::fromUtf8(""));
-        close = new QPushButton(LibrarySystem);
-        close->setObjectName("close");
-        close->setGeometry(QRect(50, 330, 81, 31));
-        QFont font;
-        font.setPointSize(14);
-        close->setFont(font);
-        close->setStyleSheet(QString::fromUtf8("background-color: rgb(103, 194, 58);\n"
-"border-radius:30px ;"));
         ad = new QPushButton(LibrarySystem);
         ad->setObjectName("ad");
         ad->setGeometry(QRect(170, 160, 250, 51));
         ad->setMinimumSize(QSize(250, 45));
-        QFont font1;
-        font1.setPointSize(18);
-        ad->setFont(font1);
+        QFont font;
+        font.setPointSize(18);
+        ad->setFont(font);
         ad->setStyleSheet(QString::fromUtf8("background-color: rgb(64, 158, 255);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:10px ;"));
@@ -60,7 +51,7 @@ public:
         re->setObjectName("re");
         re->setGeometry(QRect(170, 240, 250, 51));
         re->setMinimumSize(QSize(250, 45));
-        re->setFont(font1);
+        re->setFont(font);
         re->setStyleSheet(QString::fromUtf8("background-color: rgb(64, 158, 255);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:10px ;"));
@@ -75,7 +66,6 @@ public:
         backgroud_2->setStyleSheet(QString::fromUtf8("background-color: rgb(52, 73, 94);"));
         backgroud_2->raise();
         backgroud_1->raise();
-        close->raise();
         label->raise();
         ad->raise();
         re->raise();
@@ -89,7 +79,6 @@ public:
     {
         LibrarySystem->setWindowTitle(QCoreApplication::translate("LibrarySystem", "\345\233\276\344\271\246\351\246\206\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         label->setText(QCoreApplication::translate("LibrarySystem", "<html><head/><body><p align=\"center\"><span style=\" font-size:28pt; font-weight:700; color:#ffffff;\">\345\233\276\344\271\246\351\246\206\347\256\241\347\220\206\347\263\273\347\273\237</span></p></body></html>", nullptr));
-        close->setText(QCoreApplication::translate("LibrarySystem", "\344\277\235\345\255\230", nullptr));
         ad->setText(QCoreApplication::translate("LibrarySystem", "\347\256\241\347\220\206\345\221\230\347\231\273\345\205\245", nullptr));
         re->setText(QCoreApplication::translate("LibrarySystem", "\350\257\273\350\200\205\347\231\273\345\205\245", nullptr));
         backgroud_1->setText(QString());

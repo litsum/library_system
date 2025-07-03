@@ -19,7 +19,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,19 +28,19 @@ class Ui_admcontrol
 public:
     QTabWidget *addbook;
     QWidget *tab;
-    QPushButton *pushButton_3;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QLineEdit *name_1;
-    QLineEdit *author;
-    QLineEdit *publisher;
-    QLineEdit *isbnEdit;
     QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
     QPushButton *pushButton;
     QComboBox *comboBox;
     QLabel *resultLabel;
+    QLabel *label;
+    QLineEdit *isbnEdit;
+    QLineEdit *publisher;
+    QLineEdit *author;
+    QLineEdit *name_1;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QPushButton *pushButton_5;
+    QLabel *label_2;
     QWidget *tab_3;
     QLineEdit *name_2;
     QTableView *tableView_2;
@@ -65,99 +64,142 @@ public:
         admcontrol->setMaximumSize(QSize(625, 400));
         addbook = new QTabWidget(admcontrol);
         addbook->setObjectName("addbook");
-        addbook->setGeometry(QRect(0, 0, 621, 401));
+        addbook->setGeometry(QRect(13, 18, 601, 361));
         tab = new QWidget();
         tab->setObjectName("tab");
-        pushButton_3 = new QPushButton(tab);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(430, 100, 56, 18));
-        verticalLayoutWidget = new QWidget(tab);
-        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(30, 20, 391, 211));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        name_1 = new QLineEdit(verticalLayoutWidget);
-        name_1->setObjectName("name_1");
-        name_1->setMinimumSize(QSize(250, 30));
-        name_1->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-
-        verticalLayout->addWidget(name_1, 0, Qt::AlignmentFlag::AlignHCenter);
-
-        author = new QLineEdit(verticalLayoutWidget);
-        author->setObjectName("author");
-        author->setMinimumSize(QSize(250, 30));
-        author->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-
-        verticalLayout->addWidget(author, 0, Qt::AlignmentFlag::AlignHCenter);
-
-        publisher = new QLineEdit(verticalLayoutWidget);
-        publisher->setObjectName("publisher");
-        publisher->setMinimumSize(QSize(250, 30));
-        publisher->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-
-        verticalLayout->addWidget(publisher, 0, Qt::AlignmentFlag::AlignHCenter);
-
-        isbnEdit = new QLineEdit(verticalLayoutWidget);
-        isbnEdit->setObjectName("isbnEdit");
-        isbnEdit->setMinimumSize(QSize(250, 30));
-        isbnEdit->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
-"	border:none;\n"
-"	border-bottom:1px solid black;}"));
-        isbnEdit->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop);
-
-        verticalLayout->addWidget(isbnEdit, 0, Qt::AlignmentFlag::AlignHCenter);
-
+        tab->setStyleSheet(QString::fromUtf8(""));
         pushButton_2 = new QPushButton(tab);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(430, 60, 56, 18));
-        pushButton_4 = new QPushButton(tab);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(430, 140, 56, 18));
-        pushButton_4->setMinimumSize(QSize(56, 18));
-        pushButton_4->setMaximumSize(QSize(56, 18));
+        pushButton_2->setGeometry(QRect(380, 30, 71, 31));
+        QFont font;
+        font.setPointSize(10);
+        pushButton_2->setFont(font);
+        pushButton_2->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(118, 118, 118);\n"
+"color: rgb(255, 255, 255);"));
         pushButton = new QPushButton(tab);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(200, 300, 80, 30));
+        pushButton->setGeometry(QRect(230, 290, 91, 31));
         pushButton->setMinimumSize(QSize(80, 30));
+        QFont font1;
+        font1.setPointSize(13);
+        pushButton->setFont(font1);
+        pushButton->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgb(26, 188, 156);"));
         comboBox = new QComboBox(tab);
         comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(330, 250, 60, 22));
+        comboBox->setGeometry(QRect(320, 250, 71, 22));
         resultLabel = new QLabel(tab);
         resultLabel->setObjectName("resultLabel");
-        resultLabel->setGeometry(QRect(100, 250, 201, 16));
+        resultLabel->setGeometry(QRect(170, 250, 121, 21));
+        resultLabel->setFont(font);
+        resultLabel->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"border-radius:5px ;"));
+        resultLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        label = new QLabel(tab);
+        label->setObjectName("label");
+        label->setGeometry(QRect(0, 0, 601, 341));
+        label->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
+"background-color: rgb(199, 199, 199);"));
+        isbnEdit = new QLineEdit(tab);
+        isbnEdit->setObjectName("isbnEdit");
+        isbnEdit->setGeometry(QRect(100, 200, 250, 30));
+        isbnEdit->setMinimumSize(QSize(250, 30));
+        QFont font2;
+        font2.setPointSize(11);
+        isbnEdit->setFont(font2);
+        isbnEdit->setStyleSheet(QString::fromUtf8("border-radius:5px ;\n"
+"color: rgb(139, 139, 139);\n"
+"background-color: rgb(255, 255, 255);"));
+        isbnEdit->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        publisher = new QLineEdit(tab);
+        publisher->setObjectName("publisher");
+        publisher->setGeometry(QRect(100, 140, 250, 30));
+        publisher->setMinimumSize(QSize(250, 30));
+        publisher->setFont(font2);
+        publisher->setStyleSheet(QString::fromUtf8("border-radius:5px ;\n"
+"color: rgb(139, 139, 139);\n"
+"background-color: rgb(255, 255, 255);"));
+        author = new QLineEdit(tab);
+        author->setObjectName("author");
+        author->setGeometry(QRect(100, 90, 250, 30));
+        author->setMinimumSize(QSize(250, 30));
+        author->setFont(font2);
+        author->setStyleSheet(QString::fromUtf8("border-radius:5px ;\n"
+"color: rgb(139, 139, 139);\n"
+"background-color: rgb(255, 255, 255);"));
+        name_1 = new QLineEdit(tab);
+        name_1->setObjectName("name_1");
+        name_1->setGeometry(QRect(100, 30, 250, 30));
+        name_1->setMinimumSize(QSize(250, 30));
+        name_1->setFont(font2);
+        name_1->setStyleSheet(QString::fromUtf8("border-radius:5px ;\n"
+"gridline-color: rgb(0, 85, 255);\n"
+"color: rgb(139, 139, 139);\n"
+"background-color: rgb(255, 255, 255);"));
+        pushButton_3 = new QPushButton(tab);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(380, 90, 71, 31));
+        pushButton_3->setFont(font);
+        pushButton_3->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(118, 118, 118);\n"
+"color: rgb(255, 255, 255);"));
+        pushButton_4 = new QPushButton(tab);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(380, 140, 71, 31));
+        pushButton_4->setFont(font);
+        pushButton_4->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(118, 118, 118);\n"
+"color: rgb(255, 255, 255);"));
         pushButton_5 = new QPushButton(tab);
         pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(430, 190, 56, 18));
-        pushButton_5->setMinimumSize(QSize(56, 18));
-        pushButton_5->setMaximumSize(QSize(56, 18));
+        pushButton_5->setGeometry(QRect(380, 200, 71, 31));
+        pushButton_5->setFont(font);
+        pushButton_5->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(118, 118, 118);\n"
+"color: rgb(255, 255, 255);"));
+        label_2 = new QLabel(tab);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(90, 10, 381, 311));
+        label_2->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(222, 222, 222);"));
         addbook->addTab(tab, QString());
+        label->raise();
+        label_2->raise();
+        pushButton_2->raise();
+        pushButton->raise();
+        comboBox->raise();
+        resultLabel->raise();
+        isbnEdit->raise();
+        publisher->raise();
+        author->raise();
+        name_1->raise();
+        pushButton_3->raise();
+        pushButton_4->raise();
+        pushButton_5->raise();
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
+        tab_3->setStyleSheet(QString::fromUtf8(""));
         name_2 = new QLineEdit(tab_3);
         name_2->setObjectName("name_2");
         name_2->setGeometry(QRect(10, 10, 250, 30));
         name_2->setMinimumSize(QSize(250, 30));
+        name_2->setFont(font);
         name_2->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
-"	background-color:rgba(255,255,255,0);\n"
+"	alternate-background-color: rgb(255, 255, 255);\n"
 "	border:none;\n"
 "	border-bottom:1px solid black;}"));
         tableView_2 = new QTableView(tab_3);
         tableView_2->setObjectName("tableView_2");
-        tableView_2->setGeometry(QRect(0, 40, 621, 341));
+        tableView_2->setGeometry(QRect(0, 50, 621, 331));
+        tableView_2->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+"background-color: rgb(222, 222, 222);"));
         searchBox = new QComboBox(tab_3);
         searchBox->setObjectName("searchBox");
-        searchBox->setGeometry(QRect(200, 10, 60, 22));
+        searchBox->setGeometry(QRect(180, 14, 71, 22));
+        searchBox->setStyleSheet(QString::fromUtf8("border-radius:5px;\n"
+"background-color: rgb(232, 232, 232);"));
         addbook->addTab(tab_3, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName("tab_5");
@@ -189,6 +231,7 @@ public:
         addbook->addTab(tab_5, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName("tab_2");
+        tab_2->setStyleSheet(QString::fromUtf8(""));
         name_3 = new QLineEdit(tab_2);
         name_3->setObjectName("name_3");
         name_3->setGeometry(QRect(0, 10, 250, 30));
@@ -208,7 +251,7 @@ public:
         QObject::connect(pushButton_4, &QPushButton::clicked, publisher, qOverload<>(&QLineEdit::clear));
         QObject::connect(pushButton_5, &QPushButton::clicked, isbnEdit, qOverload<>(&QLineEdit::clear));
 
-        addbook->setCurrentIndex(0);
+        addbook->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(admcontrol);
@@ -216,17 +259,20 @@ public:
 
     void retranslateUi(QDialog *admcontrol)
     {
-        admcontrol->setWindowTitle(QCoreApplication::translate("admcontrol", "admcontrol", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
-        name_1->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
-        author->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\275\234\350\200\205\357\274\232", nullptr));
-        publisher->setPlaceholderText(QCoreApplication::translate("admcontrol", "\345\207\272\347\211\210\347\244\276\357\274\232", nullptr));
-        isbnEdit->setPlaceholderText(QCoreApplication::translate("admcontrol", "ISBN\357\274\232", nullptr));
+        admcontrol->setWindowTitle(QCoreApplication::translate("admcontrol", "\347\256\241\347\220\206\345\221\230\346\223\215\344\275\234", nullptr));
         pushButton_2->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         pushButton->setText(QCoreApplication::translate("admcontrol", "\347\241\256\350\256\244", nullptr));
         resultLabel->setText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\347\261\273\345\210\253\357\274\232", nullptr));
+        label->setText(QString());
+        isbnEdit->setText(QString());
+        isbnEdit->setPlaceholderText(QCoreApplication::translate("admcontrol", "ISBN\357\274\232", nullptr));
+        publisher->setPlaceholderText(QCoreApplication::translate("admcontrol", "\345\207\272\347\211\210\347\244\276\357\274\232", nullptr));
+        author->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\275\234\350\200\205\357\274\232", nullptr));
+        name_1->setPlaceholderText(QCoreApplication::translate("admcontrol", "\344\271\246\345\220\215\357\274\232", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
         pushButton_5->setText(QCoreApplication::translate("admcontrol", "\346\270\205\347\251\272", nullptr));
+        label_2->setText(QString());
         addbook->setTabText(addbook->indexOf(tab), QCoreApplication::translate("admcontrol", "\346\267\273\345\212\240\344\271\246\347\261\215", nullptr));
         name_2->setPlaceholderText(QCoreApplication::translate("admcontrol", "\350\257\267\351\200\211\346\213\251\346\220\234\347\264\242\347\233\256\346\240\207\357\274\232", nullptr));
         addbook->setTabText(addbook->indexOf(tab_3), QCoreApplication::translate("admcontrol", "\344\271\246\347\261\215\346\225\260\346\215\256", nullptr));

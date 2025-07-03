@@ -102,6 +102,7 @@ Makefile: ../../libraryproject.pro D:/Qt/6.9.1/mingw_64/mkspecs/win32-g++/qmake.
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_example_icons_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_examples_asset_downloader_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_fb_support_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_ffmpegmediapluginimpl_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_freetype_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_gui.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_gui_private.pri \
@@ -124,6 +125,12 @@ Makefile: ../../libraryproject.pro D:/Qt/6.9.1/mingw_64/mkspecs/win32-g++/qmake.
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_linguist.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimedia.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediatestlibprivate_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_network.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_network_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_opengl.pri \
@@ -189,6 +196,7 @@ Makefile: ../../libraryproject.pro D:/Qt/6.9.1/mingw_64/mkspecs/win32-g++/qmake.
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dparticles_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3druntimerender.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dutils.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dxr.pri \
@@ -249,6 +257,8 @@ Makefile: ../../libraryproject.pro D:/Qt/6.9.1/mingw_64/mkspecs/win32-g++/qmake.
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_shadertools.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_shadertools_private.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_spatialaudio.pri \
+		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_spatialaudio_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_sql.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_sql_private.pri \
 		D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_svg.pri \
@@ -340,6 +350,7 @@ D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_entrypoint_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_example_icons_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_examples_asset_downloader_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_fb_support_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_ffmpegmediapluginimpl_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_freetype_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_gui.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_gui_private.pri:
@@ -362,6 +373,12 @@ D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_labssharedimage_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_linguist.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimedia.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediatestlibprivate_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_network.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_network_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_opengl.pri:
@@ -427,6 +444,7 @@ D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dparticles.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dparticles_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3druntimerender.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dutils.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dutils_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quick3dxr.pri:
@@ -487,6 +505,8 @@ D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quickwidgets.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_shadertools.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_shadertools_private.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_spatialaudio.pri:
+D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_spatialaudio_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_sql.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_sql_private.pri:
 D:/Qt/6.9.1/mingw_64/mkspecs/modules/qt_lib_svg.pri:

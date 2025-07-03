@@ -23,161 +23,45 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>admcontrol</string>
+   <string>管理员操作</string>
   </property>
   <widget class="QTabWidget" name="addbook">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>621</width>
-     <height>401</height>
+     <x>13</x>
+     <y>18</y>
+     <width>601</width>
+     <height>361</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <attribute name="title">
      <string>添加书籍</string>
     </attribute>
-    <widget class="QPushButton" name="pushButton_3">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>100</y>
-       <width>56</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>清空</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>20</y>
-       <width>391</width>
-       <height>211</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="QLineEdit" name="name_1">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
-        </property>
-        <property name="placeholderText">
-         <string>书名：</string>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="QLineEdit" name="author">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
-        </property>
-        <property name="placeholderText">
-         <string>作者：</string>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="QLineEdit" name="publisher">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
-        </property>
-        <property name="placeholderText">
-         <string>出版社：</string>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="QLineEdit" name="isbnEdit">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
-	border:none;
-	border-bottom:1px solid black;}</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-        </property>
-        <property name="placeholderText">
-         <string>ISBN：</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>430</x>
-       <y>60</y>
-       <width>56</width>
-       <height>18</height>
+       <x>380</x>
+       <y>30</y>
+       <width>71</width>
+       <height>31</height>
       </rect>
      </property>
-     <property name="text">
-      <string>清空</string>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>140</y>
-       <width>56</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>56</width>
-       <height>18</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>56</width>
-       <height>18</height>
-      </size>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(118, 118, 118);
+color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string>清空</string>
@@ -186,10 +70,10 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>300</y>
-       <width>80</width>
-       <height>30</height>
+       <x>230</x>
+       <y>290</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -197,6 +81,16 @@
        <width>80</width>
        <height>30</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px ;
+color: rgb(255, 255, 255);
+background-color: rgb(26, 188, 156);</string>
      </property>
      <property name="text">
       <string>确认</string>
@@ -205,9 +99,9 @@
     <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>330</x>
+       <x>320</x>
        <y>250</y>
-       <width>60</width>
+       <width>71</width>
        <height>22</height>
       </rect>
      </property>
@@ -215,43 +109,272 @@
     <widget class="QLabel" name="resultLabel">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>170</x>
        <y>250</y>
-       <width>201</width>
-       <height>16</height>
+       <width>121</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:5px ;</string>
      </property>
      <property name="text">
       <string>请选择类别：</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>430</x>
-       <y>190</y>
-       <width>56</width>
-       <height>18</height>
+       <x>0</x>
+       <y>0</y>
+       <width>601</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px ;
+background-color: rgb(199, 199, 199);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="isbnEdit">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>200</y>
+       <width>250</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="minimumSize">
       <size>
-       <width>56</width>
-       <height>18</height>
+       <width>250</width>
+       <height>30</height>
       </size>
      </property>
-     <property name="maximumSize">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:5px ;
+color: rgb(139, 139, 139);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>ISBN：</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="publisher">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>140</y>
+       <width>250</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
       <size>
-       <width>56</width>
-       <height>18</height>
+       <width>250</width>
+       <height>30</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:5px ;
+color: rgb(139, 139, 139);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>出版社：</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="author">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>90</y>
+       <width>250</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>250</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:5px ;
+color: rgb(139, 139, 139);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>作者：</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="name_1">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>250</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>250</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:5px ;
+gridline-color: rgb(0, 85, 255);
+color: rgb(139, 139, 139);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>书名：</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>90</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(118, 118, 118);
+color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string>清空</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>140</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(118, 118, 118);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>清空</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>200</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(118, 118, 118);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>清空</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>10</y>
+       <width>381</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(222, 222, 222);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>pushButton_2</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>comboBox</zorder>
+    <zorder>resultLabel</zorder>
+    <zorder>isbnEdit</zorder>
+    <zorder>publisher</zorder>
+    <zorder>author</zorder>
+    <zorder>name_1</zorder>
+    <zorder>pushButton_3</zorder>
+    <zorder>pushButton_4</zorder>
+    <zorder>pushButton_5</zorder>
    </widget>
    <widget class="QWidget" name="tab_3">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <attribute name="title">
      <string>书籍数据</string>
     </attribute>
@@ -270,9 +393,14 @@
        <height>30</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit{
-	background-color:rgba(255,255,255,0);
+	alternate-background-color: rgb(255, 255, 255);
 	border:none;
 	border-bottom:1px solid black;}</string>
      </property>
@@ -284,20 +412,28 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>50</y>
        <width>621</width>
-       <height>341</height>
+       <height>331</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color: rgb(222, 222, 222);</string>
      </property>
     </widget>
     <widget class="QComboBox" name="searchBox">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>10</y>
-       <width>60</width>
+       <x>180</x>
+       <y>14</y>
+       <width>71</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:5px;
+background-color: rgb(232, 232, 232);</string>
      </property>
     </widget>
    </widget>
@@ -396,6 +532,9 @@ background-color:rgba(255,255,255,0);
     </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <attribute name="title">
      <string>读者数据</string>
     </attribute>
@@ -446,12 +585,12 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>445</x>
+     <x>452</x>
      <y>87</y>
     </hint>
     <hint type="destinationlabel">
-     <x>330</x>
-     <y>79</y>
+     <x>320</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -462,12 +601,12 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>448</x>
-     <y>137</y>
+     <x>432</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>351</x>
-     <y>134</y>
+     <x>338</x>
+     <y>145</y>
     </hint>
    </hints>
   </connection>
@@ -478,12 +617,12 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>444</x>
-     <y>177</y>
+     <x>434</x>
+     <y>192</y>
     </hint>
     <hint type="destinationlabel">
-     <x>351</x>
-     <y>183</y>
+     <x>328</x>
+     <y>196</y>
     </hint>
    </hints>
   </connection>
@@ -494,12 +633,12 @@ background-color:rgba(255,255,255,0);
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>439</x>
-     <y>218</y>
+     <x>443</x>
+     <y>252</y>
     </hint>
     <hint type="destinationlabel">
-     <x>311</x>
-     <y>222</y>
+     <x>347</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>

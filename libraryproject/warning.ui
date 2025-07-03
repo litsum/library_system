@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>警告！</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/chahao.jpg</normaloff>:/chahao.jpg</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -94,6 +98,8 @@ background-color: rgb(248, 248, 248);</string>
   <zorder>pushButton</zorder>
   <zorder>pushButton_2</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
  <connections/>
 </ui>

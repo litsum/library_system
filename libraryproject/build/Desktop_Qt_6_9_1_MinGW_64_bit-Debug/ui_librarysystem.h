@@ -10,6 +10,7 @@
 #define UI_LIBRARYSYSTEM_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -31,6 +32,9 @@ public:
         if (LibrarySystem->objectName().isEmpty())
             LibrarySystem->setObjectName("LibrarySystem");
         LibrarySystem->resize(600, 400);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/tubiao.jpg"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        LibrarySystem->setWindowIcon(icon);
         LibrarySystem->setStyleSheet(QString::fromUtf8(""));
         label = new QLabel(LibrarySystem);
         label->setObjectName("label");

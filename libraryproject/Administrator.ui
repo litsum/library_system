@@ -147,8 +147,11 @@ background-color: rgb(237, 239, 241);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius:10px ;
-color: rgb(183, 183, 183);
+color: rgb(139, 139, 139);
 background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
      <property name="placeholderText">
       <string>请输入账号</string>
@@ -179,7 +182,7 @@ background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius:10px ;
-color: rgb(183, 183, 183);
+color: rgb(139, 139, 139);
 background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="echoMode">

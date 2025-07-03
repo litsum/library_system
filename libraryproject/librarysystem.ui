@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>图书馆管理系统</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/tubiao.jpg</normaloff>:/tubiao.jpg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -135,6 +139,8 @@ border-radius:5px ;</string>
   <zorder>ad</zorder>
   <zorder>re</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -82,7 +82,7 @@ public:
         font2.setPointSize(11);
         adaccout->setFont(font2);
         adaccout->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
-"color: rgb(183, 183, 183);\n"
+"color: rgb(139, 139, 139);\n"
 "background-color: rgb(255, 255, 255);"));
         adaccout->setClearButtonEnabled(true);
         adpassword = new QLineEdit(frame_3);
@@ -91,7 +91,7 @@ public:
         adpassword->setMinimumSize(QSize(250, 50));
         adpassword->setFont(font2);
         adpassword->setStyleSheet(QString::fromUtf8("border-radius:10px ;\n"
-"color: rgb(183, 183, 183);\n"
+"color: rgb(139, 139, 139);\n"
 "background-color: rgb(255, 255, 255);"));
         adpassword->setEchoMode(QLineEdit::EchoMode::Password);
         adpassword->setClearButtonEnabled(true);
@@ -137,6 +137,7 @@ public:
     {
         Administrator->setWindowTitle(QCoreApplication::translate("Administrator", "\347\256\241\347\220\206\345\221\230\347\224\250\346\210\267\347\231\273\345\275\225", nullptr));
         label->setText(QCoreApplication::translate("Administrator", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">\346\254\242\350\277\216\347\256\241\347\220\206\345\221\230\347\231\273\345\205\245</span></p></body></html>", nullptr));
+        adaccout->setText(QString());
         adaccout->setPlaceholderText(QCoreApplication::translate("Administrator", "\350\257\267\350\276\223\345\205\245\350\264\246\345\217\267", nullptr));
         adpassword->setPlaceholderText(QCoreApplication::translate("Administrator", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
         next->setText(QCoreApplication::translate("Administrator", "\347\231\273\345\275\225", nullptr));

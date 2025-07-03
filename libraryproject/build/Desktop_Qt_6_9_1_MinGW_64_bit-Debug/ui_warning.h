@@ -10,6 +10,7 @@
 #define UI_WARNING_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
@@ -30,6 +31,9 @@ public:
         if (warning->objectName().isEmpty())
             warning->setObjectName("warning");
         warning->resize(400, 300);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/chahao.jpg"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        warning->setWindowIcon(icon);
         label = new QLabel(warning);
         label->setObjectName("label");
         label->setGeometry(QRect(10, 50, 381, 141));

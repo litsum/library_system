@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>zhanghu.png</file>
+        <file>mima.png</file>
+        <file>reg_1.png</file>
+        <file>chahao.jpg</file>
+        <file>tubiao.jpg</file>
+        <file>beijing.jpg</file>
+        <file>bgr1.png</file>
+        <file>bgr2.png</file>
+        <file>bgr3.png</file>
+        <file>bgr4.png</file>
+        <file>bgr5.png</file>
+        <file>bgr6.png</file>
+        <file>bgr7.png</file>
+        <file>tushu.png</file>
+        <file>mkf.png</file>
+        <file>mkf1.png</file>
+        <file>jxz.png</file>
+    </qresource>
+</RCC>
